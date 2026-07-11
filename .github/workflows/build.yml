@@ -1,0 +1,14 @@
+name: Verify proofs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build with Lean (kernel-checks all proofs)
+        uses: leanprover/lean-action@v1
