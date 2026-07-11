@@ -5,15 +5,17 @@ autonomous discovery-and-certification pipeline (statement selection → numeric
 falsification → multi-engine proof search → local kernel verification) run by
 Solarys431.
 
-Every file in this repository compiles with the Lean 4 kernel: no `sorry`,
-no additional axioms. Trust level is stated per file (pure kernel vs
-kernel + compiler for `native_decide`).
+Every file in this repository compiles with Lean 4 and contains no `sorry`.
+Trust level is stated per file: **pure kernel** (no axioms beyond mathlib) vs
+**compiler** (`native_decide`, which additionally trusts `Lean.ofReduceBool`
+and the compiler). We label each proof honestly rather than blur the distinction.
 
 ## Proofs
 
-| File | Statement | Status | Author of proof |
-|------|-----------|--------|-----------------|
+| File | Statement | Trust | Author of proof |
+|------|-----------|-------|-----------------|
 | [`UnicoProofs/Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Erdős Problem 1064, variant k2** — there are infinitely many `n` with `φ(n) < φ(n − φ(n))` (solved informally by Grytczuk–Luca–Wójtowicz, 2001; no `formal_proof` recorded in [formal-conjectures](https://github.com/google-deepmind/formal-conjectures); an equivalent independent proof appeared in [rjwalters/lean-genius](https://github.com/rjwalters/lean-genius) on July 8, 2026 — see the prior-art note in the file) | ✅ pure kernel | Aristotle (Harmonic AI) — see disclosure in file |
+| [`UnicoProofs/Erdos1148Counterexample.lean`](UnicoProofs/Erdos1148Counterexample.lean) | **Erdős Problem 1148, the counterexample `6563`** — `6563` is not representable as `x² + y² − z²` with `max(x², y², z²) ≤ 6563` (the largest such integer known) | ⚙️ compiler (`native_decide`, depends on `Lean.ofReduceBool`) | Claude (Anthropic) — see disclosure in file |
 
 ## How to verify
 
