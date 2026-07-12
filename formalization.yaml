@@ -1,0 +1,132 @@
+# formalization.yaml (v0.3) — see https://github.com/mathlib-initiative/formalization.yaml
+version: "v0.3"
+
+project:
+  name: "unico-lean-proofs"
+  authors:
+    - "Claude (Anthropic) — formalization"
+    - "Solarys431 — direction and operation of the pipeline"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Morley's trisector theorem (Wiedijk #84)"
+    authors: ["Frank Morley"]
+    id: "https://www.cs.ru.nl/~freek/100/ (entry 84)"
+    type: "classical theorem (1899)"
+    license: "public domain"
+    author_contacted: "n/a"
+    prior_work: "none built upon; independent formalization. Existing formalizations in other systems: HOL Light (Harrison), Isabelle (Puyobro), Rocq (Guilhot), Mizar (Coghetto). Partial trigonometric identities (no points/rays/intersections) in https://github.com/rjwalters/lean-genius"
+  - title: "A new proof of Morley's theorem"
+    authors: ["Alain Connes"]
+    id: "https://doi.org/10.1007/BF02698689"
+    type: "paper (Publ. Math. IHÉS S88, 1998) — proof-strategy inspiration (cube-roots-of-unity equilaterality criterion)"
+    author_contacted: "no"
+  - title: "Erdős Problem 1064 (variant k2) and Erdős Problem 1148"
+    authors: ["Paul Erdős (problems); Grytczuk–Luca–Wójtowicz (1064 informal solution)"]
+    id: "https://www.erdosproblems.com/1064"
+    type: "problem-list entries"
+    author_contacted: "n/a"
+
+status:
+  scope: >-
+    Small standalone repository of machine-verified results produced by an
+    autonomous certification pipeline. Main object: a geometric formalization
+    of Morley's trisector theorem in the complex plane (public statement with
+    trisectors as rays, plus existence/uniqueness and non-degeneracy
+    companions). Also contains two Erdős-problem items.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound", "Lean.ofReduceBool (Erdos1148Counterexample only, via native_decide)"]
+  main_results:
+    - declaration: "morley_classico"
+      file: "UnicoProofs/Morley.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "morley_esistenza_classico"
+      file: "UnicoProofs/Morley.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "morley_non_degenere_classico"
+      file: "UnicoProofs/Morley.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "erdos_1064_k2"
+      file: "UnicoProofs/Erdos1064K2.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "erdos_1148_counterexample_6563"
+      file: "UnicoProofs/Erdos1148Counterexample.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound", "Lean.ofReduceBool"]
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["claude (Anthropic, 2026 models)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Autonomous pipeline: target selection → numeric falsification (Python)
+        → proof construction with exact symbolic cofactors (sympy computes the
+        certificates for linear_combination steps) → local Lean kernel
+        certifier as sole gatekeeper → public CI re-verification. Adversarial
+        design/fidelity reviews by an independent LLM (OpenAI Codex, gpt-5.6)
+        at architecture checkpoints. Morley: layered development (algebraic
+        core, trigonometric bridge, ray-intersection lemma, arg toolkit,
+        assembly), each layer kernel-certified separately before composition.
+      cost:
+        wall_time: "Morley: ~1 day end-to-end (design + proof + hardening); ~19 kernel verdicts"
+        spend_usd: "subscription-based usage"
+        hardware: "consumer Apple Silicon machine; models API-only"
+    - method: "agent"
+      models: ["aristotle (Harmonic)", "claude (Anthropic)"]
+      framework: "Harmonic Aristotle; Claude Code"
+      tool_setup: "Erdős items: Aristotle produced the 1064-k2 proof; Claude produced the 1148 native_decide certificate."
+  spend_usd: "subscription-based usage"
+  notes: >-
+    All mathematics is AI-generated under human direction; the human operator
+    is not a mathematician. The Lean kernel is the sole arbiter: nothing is
+    published unless it compiles with zero sorries.
+
+fidelity:
+  divergences: >-
+    Morley: stated in the complex plane ℂ rather than an abstract Euclidean
+    plane. Trisectors are open rays (vertex excluded) with direction obtained
+    by rotating the side by one third of the signed angle (Complex.arg), so a
+    single definition covers both orientations. Conclusion is equality of the
+    three side lengths (dist), with pairwise distinctness as a separate
+    companion theorem; non-collinearity hypothesis given both as
+    ¬ Collinear ℝ {A, B, C} and as the equivalent im ((C−A)/(B−A)) ≠ 0.
+    Identifiers and inline comments are in Italian; file headers in English.
+
+review:
+  status: "self-assessed + agent-reviewed; community review requested"
+  reviewers:
+    - "Lean kernel (local certifier + GitHub Actions CI on pinned toolchain v4.32.0-rc1)"
+    - "OpenAI Codex gpt-5.6 (adversarial statement-fidelity review, xhigh reasoning)"
+  notes: >-
+    Kernel-checked on two independent machines. Statement fidelity (does the
+    formal statement say what Morley's theorem says?) adversarially reviewed
+    by an independent LLM, which found no loopholes. Community review
+    requested on the Lean Zulip (#maths, topic "Morley's theorem (#84):
+    AI-generated proof, please check", 2026-07-13).
+
+alignment:
+  namespace: ""
+  statements:
+    - source: "Morley's trisector theorem (adjacent trisectors of a non-degenerate triangle meet in an equilateral triangle)"
+      lean: "morley_classico"
+      module: "UnicoProofs/Morley.lean"
+      status: "proved"
+    - source: "Existence and uniqueness of each adjacent-trisector intersection"
+      lean: "morley_esistenza_classico"
+      module: "UnicoProofs/Morley.lean"
+      status: "proved"
+    - source: "The Morley triangle is non-degenerate (three pairwise distinct points)"
+      lean: "morley_non_degenere_classico"
+      module: "UnicoProofs/Morley.lean"
+      status: "proved"
+
+acknowledgements: >-
+  The mathlib community for the library this builds on; Alain Connes for the
+  proof strategy that inspired the algebraic core; Jeremy Chen for pointing us
+  to this reporting standard minutes after the announcement.
