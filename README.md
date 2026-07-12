@@ -1,3 +1,5 @@
+<div align="right">🌐 <b>English</b> · <a href="README.it.md">Italiano</a></div>
+
 # unico-lean-proofs
 
 [![Verify proofs](https://github.com/Solarys431/unico-lean-proofs/actions/workflows/build.yml/badge.svg)](https://github.com/Solarys431/unico-lean-proofs/actions/workflows/build.yml)
