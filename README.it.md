@@ -21,6 +21,62 @@ conta più di una lista più lunga di spunte verdi.
 
 ---
 
+## In evidenza — Teorema di Feuerbach (Wiedijk #29)
+
+*L'enunciato classico, completo, dimostrato il 13 luglio 2026 dalla pipeline
+autonoma di certificazione UNICO / NOUS — in una sola serata di lavoro.*
+
+> In ogni triangolo, la circonferenza dei nove punti è tangente internamente al
+> cerchio inscritto e tangente esternamente a ciascuno dei tre cerchi
+> exinscritti. — K. W. Feuerbach, 1822
+
+```lean
+theorem feuerbach_insphere (t : Triangle ℝ P) :
+    t.insphere.IsIntTangent t.ninePointCircle
+
+theorem feuerbach_exsphere (t : Triangle ℝ P) (i : Fin 3) :
+    (t.exsphere {i}).IsExtTangent t.ninePointCircle
+```
+
+Entrambi gli enunciati valgono per **ogni** triangolo di un torsore euclideo
+reale di dimensione due, **senza condizioni aggiuntive**: l'esistenza dei
+centri e la positività dei raggi sono derivate internamente da mathlib. La
+tangenza è quella di mathlib (`Sphere.IsIntTangent` / `Sphere.IsExtTangent`;
+per convenzione esplicita di mathlib i cerchi coincidenti contano come tangenti
+internamente — rilevante solo per il triangolo equilatero, dove i due cerchi
+coincidono).
+
+**Prior art e novità.** Il teorema di Feuerbach è il #29 della
+[lista di Freek Wiedijk](https://www.cs.ru.nl/~freek/100/). Era stato
+formalizzato in **HOL Light** (John Harrison, basi di Gröbner), **Rocq** (team
+CertiGeo, certificati riflessivi esterni) e **Isabelle/HOL** (Lawrence C.
+Paulson, maggio 2026 — una traduzione assistita da AI della prova HOL Light).
+La dimostrazione qui presentata è indipendente da tutte e tre: si normalizza il cerchio in/exinscritto al cerchio
+unitario, dove i punti di tangenza `t₁ t₂ t₃` parametrizzano tutto; il centro
+dei nove punti acquista la forma chiusa `e₂²/P` con
+`P = (t₁+t₂)(t₁+t₃)(t₂+t₃)`; e il ramo (tangenza interna o esterna) è
+inchiodato da un **certificato baricentrico dei segni**: con `W` il parametro
+reale del modello e `λᵢ` i pesi baricentrici del centro,
+
+```
+W · λ₀λ₁λ₂ · ‖t₀−t₁‖²‖t₀−t₂‖²‖t₁−t₂‖² = −1     e     W · (‖t₀+t₁+t₂‖² − 1) = 1
+```
+
+— due identità razionali certificate da `linear_combination` con cofattori
+generati da sympy. I segni degli `excenterWeights` di mathlib (tutti positivi
+per l'incentro, esattamente uno negativo per un excentro) decidono il ramo:
+`W ≤ −1` dà la tangenza interna, `W > 1/8` quella esterna. Niente archi,
+niente analisi per casi sugli angoli.
+
+**Fiducia: kernel puro** — 0 `sorry`, 0 assiomi propri negli 11 moduli
+([`UnicoProofs/Feuerbach/`](UnicoProofs/Feuerbach/)); i due teoremi dipendono
+solo da `[propext, Classical.choice, Quot.sound]`. Verifica con `lake build`.
+
+**Stato:** formalizzazione Lean autonoma; il contributo upstream verso mathlib
+è in fase di valutazione.
+
+---
+
 ## In evidenza — Il teorema delle trisettrici di Morley (Wiedijk n. 84)
 
 *Una formalizzazione geometrica indipendente in Lean (12 luglio 2026) — si veda la nota di prior art qui sotto.*
@@ -72,6 +128,7 @@ valutazione affidata al compilatore. Tag
 
 | File | Enunciato | Fiducia | Autore della dimostrazione |
 |------|-----------|:-------:|----------------------------|
+| [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Teorema di Feuerbach** (Wiedijk #29) — circonferenza dei nove punti tangente internamente all'inscritto (`feuerbach_insphere`) ed esternamente ai tre exinscritti (`feuerbach_exsphere`); dimostrazione indipendente, 11 moduli | ✅ kernel puro | Claude (Anthropic) |
 | [`Morley.lean`](UnicoProofs/Morley.lean) | **Teorema delle trisettrici di Morley** (Wiedijk n. 84) — enunciato geometrico, con i compagni `∃!` e di non-degenerazione; formalizzazione indipendente (si veda la nota di prior art: risolto in precedenza sul [benchmark lean-eval](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ kernel puro | Claude (Anthropic) |
 | [`Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Problema di Erdős 1064, variante k2** — esistono infiniti `n` con `φ(n) < φ(n − φ(n))` (Grytczuk–Luca–Wójtowicz 2001; dimostrazione equivalente indipendente in [lean-genius](https://github.com/rjwalters/lean-genius), 8 luglio 2026 — si veda la nota di prior art nel file) | ✅ kernel puro | Aristotle (Harmonic AI) |
 | [`Erdos1148Counterexample.lean`](UnicoProofs/Erdos1148Counterexample.lean) | **Problema di Erdős 1148** — `6563` non è rappresentabile come `x² + y² − z²` con `max(x², y², z²) ≤ 6563` (il più grande intero noto con questa proprietà) | ⚙️ compilatore | Claude (Anthropic) |

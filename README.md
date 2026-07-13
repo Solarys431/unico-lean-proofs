@@ -20,6 +20,60 @@ than a longer list of green check marks.
 
 ---
 
+## Highlight — Feuerbach's Theorem (Wiedijk #29)
+
+*The classical statement, in full, proved July 13, 2026 by the UNICO / NOUS
+autonomous certification pipeline — in a single evening session.*
+
+> In any triangle, the nine-point circle is internally tangent to the incircle
+> and externally tangent to each of the three excircles. — K. W. Feuerbach, 1822
+
+```lean
+theorem feuerbach_insphere (t : Triangle ℝ P) :
+    t.insphere.IsIntTangent t.ninePointCircle
+
+theorem feuerbach_exsphere (t : Triangle ℝ P) (i : Fin 3) :
+    (t.exsphere {i}).IsExtTangent t.ninePointCircle
+```
+
+Both statements hold for **every** triangle in a two-dimensional real inner
+product torsor, with **no side conditions** — existence of the in/excenters and
+positivity of the radii are derived internally from mathlib. Tangency is
+mathlib's own `Sphere.IsIntTangent` / `Sphere.IsExtTangent` (which, per
+mathlib's explicit convention, count coincident circles as internally tangent —
+relevant only for the equilateral triangle, where the two circles coincide).
+
+**Prior art & novelty.** Feuerbach's theorem is #29 on
+[Freek Wiedijk's list](https://www.cs.ru.nl/~freek/100/). It had been
+formalized in **HOL Light** (John Harrison, Gröbner-basis approach), **Rocq**
+(the CertiGeo team, reflexive external certificates) and **Isabelle/HOL**
+(Lawrence C. Paulson, May 2026 — an AI-assisted translation of the HOL Light
+proof). The proof here is independent of all three: it normalizes the in/excircle to the unit circle,
+where the touchpoints `t₁ t₂ t₃` parametrize everything; the nine-point
+center acquires the closed form `e₂²/P` with `P = (t₁+t₂)(t₁+t₃)(t₂+t₃)`;
+and the branch (internal vs. external tangency) is pinned by a **barycentric
+sign certificate**: with `W` the real model parameter and `λᵢ` the barycentric
+weights of the center,
+
+```
+W · λ₀λ₁λ₂ · ‖t₀−t₁‖²‖t₀−t₂‖²‖t₁−t₂‖² = −1     and     W · (‖t₀+t₁+t₂‖² − 1) = 1
+```
+
+— two rational identities certified by `linear_combination` with
+sympy-generated cofactors. mathlib's `excenterWeights` signs (all positive for
+the incenter, exactly one negative for an excenter) then decide the branch:
+`W ≤ −1` gives internal, `W > 1/8` external. No arcs, no case analysis on
+angles.
+
+**Trust: pure kernel** — 0 `sorry`, 0 custom axioms across all 11 modules
+([`UnicoProofs/Feuerbach/`](UnicoProofs/Feuerbach/)); the two theorems depend
+on `[propext, Classical.choice, Quot.sound]` only. Verify with `lake build`.
+
+**Status:** standalone Lean formalization; an upstream contribution to mathlib
+is under consideration.
+
+---
+
 ## Highlight — Morley's Trisector Theorem (Wiedijk #84)
 
 *An independent geometric formalization in Lean (July 12, 2026) — see the prior-art note below.*
@@ -68,6 +122,7 @@ evaluation. Tagged [`morley-2026-07-12`](https://github.com/Solarys431/unico-lea
 
 | File | Statement | Trust | Proof author |
 |------|-----------|:-----:|--------------|
+| [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Feuerbach's theorem** (Wiedijk #29) — nine-point circle internally tangent to the incircle (`feuerbach_insphere`) and externally tangent to the three excircles (`feuerbach_exsphere`); independent proof, 11 modules | ✅ pure kernel | Claude (Anthropic) |
 | [`Morley.lean`](UnicoProofs/Morley.lean) | **Morley's trisector theorem** (Wiedijk #84) — geometric statement, with `∃!` and non-degeneracy companions; independent formalization (see prior-art note: solved earlier on the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ pure kernel | Claude (Anthropic) |
 | [`Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Erdős Problem 1064, variant k2** — infinitely many `n` with `φ(n) < φ(n − φ(n))` (Grytczuk–Luca–Wójtowicz 2001; independent equivalent proof in [lean-genius](https://github.com/rjwalters/lean-genius), July 8, 2026 — see prior-art note in file) | ✅ pure kernel | Aristotle (Harmonic AI) |
 | [`Erdos1148Counterexample.lean`](UnicoProofs/Erdos1148Counterexample.lean) | **Erdős Problem 1148** — `6563` is not representable as `x² + y² − z²` with `max(x², y², z²) ≤ 6563` (largest such integer known) | ⚙️ compiler | Claude (Anthropic) |

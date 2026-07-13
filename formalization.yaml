@@ -9,6 +9,13 @@ project:
   license: "Apache-2.0"
 
 sources:
+  - title: "Feuerbach's theorem (Wiedijk #29)"
+    authors: ["Karl Wilhelm Feuerbach"]
+    id: "https://www.cs.ru.nl/~freek/100/ (entry 29)"
+    type: "classical theorem (1822)"
+    license: "public domain"
+    author_contacted: "n/a"
+    prior_work: "Independent proof (2026-07-13), not built on prior formalizations. Other systems: HOL Light (John Harrison, Groebner bases), Rocq (CertiGeo team, reflexive external certificates), Isabelle/HOL (Lawrence C. Paulson, 2026-05, AI-assisted translation of the HOL Light proof). Our route: tangential normalization to the unit circle + barycentric sign certificates (rational identities closed by linear_combination with sympy-generated cofactors); branch pinning from mathlib excenterWeights signs. Design consulting and adversarial gating by gpt-5.6-sol (OpenAI); proof engineering by Claude (Anthropic)."
   - title: "Morley's trisector theorem (Wiedijk #84)"
     authors: ["Frank Morley"]
     id: "https://www.cs.ru.nl/~freek/100/ (entry 84)"
