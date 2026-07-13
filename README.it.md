@@ -23,7 +23,7 @@ conta più di una lista più lunga di spunte verdi.
 
 ## In evidenza — Il teorema delle trisettrici di Morley (Wiedijk n. 84)
 
-*Prima formalizzazione geometrica in Lean, per quanto ci risulta (12 luglio 2026).*
+*Una formalizzazione geometrica indipendente in Lean (12 luglio 2026) — si veda la nota di prior art qui sotto.*
 
 > In ogni triangolo non degenere, i tre punti d'incontro delle trisettrici
 > adiacenti degli angoli formano un triangolo equilatero. — F. Morley, 1899
@@ -47,14 +47,20 @@ trisettrici adiacenti si incontra in **esattamente un** punto, `∃!`) e
 [`morley_non_degenere_classico`](UnicoProofs/Morley.lean) (i tre punti sono
 **a due a due distinti**: un triangolo vero, mai collassato in un punto).
 
-Il teorema di Morley è il n. 84 della [lista di Freek Wiedijk](https://www.cs.ru.nl/~freek/100/)
-ed era elencato fra i [16 teoremi non ancora formalizzati in Lean](https://leanprover-community.github.io/100-missing.html)
-al 12 luglio 2026. Formalizzazioni precedenti in altri sistemi: HOL Light
-(Harrison), Isabelle (Puyobro), Rocq (Guilhot), Mizar (Coghetto). Identità
-*trigonometriche* parziali sulle lunghezze dei lati del triangolo di Morley
-(senza punti, semirette né intersezioni) esistevano in
-[lean-genius](https://github.com/rjwalters/lean-genius); si vedano le note di
-prior art all'interno del file.
+**Nota di prior art (13 luglio 2026).** Il teorema di Morley è il n. 84 della
+[lista di Freek Wiedijk](https://www.cs.ru.nl/~freek/100/) ed era elencato fra
+i [16 teoremi non ancora formalizzati in Lean](https://leanprover-community.github.io/100-missing.html)
+al momento della pubblicazione — ma a un'ora dall'annuncio, Jeremy Chen sullo
+Zulip di Lean ci ha gentilmente segnalato il [benchmark lean-eval](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem),
+il cui `morley_theorem` geometrico era già stato risolto da diversi sistemi AI
+fra il 10 giugno e l'11 luglio 2026. **Questa non è dunque la prima
+formalizzazione geometrica del teorema di Morley in Lean**, e correggiamo
+volentieri il primato annunciato. Resta una formalizzazione indipendente, con
+un enunciato diverso (semirette orientate via `arg`/3 in ℂ) e con i compagni
+`∃!` e di non-degenerazione che l'enunciato del benchmark non richiede. Altri
+sistemi: HOL Light (Harrison), Isabelle (Puyobro), Rocq (Guilhot), Mizar
+(Coghetto); identità trigonometriche parziali in
+[lean-genius](https://github.com/rjwalters/lean-genius).
 
 **Fiducia: kernel puro** — 0 `sorry`, 0 assiomi aggiuntivi, nessuna
 valutazione affidata al compilatore. Tag
@@ -66,7 +72,7 @@ valutazione affidata al compilatore. Tag
 
 | File | Enunciato | Fiducia | Autore della dimostrazione |
 |------|-----------|:-------:|----------------------------|
-| [`Morley.lean`](UnicoProofs/Morley.lean) | **Teorema delle trisettrici di Morley** (Wiedijk n. 84) — enunciato geometrico, con i compagni `∃!` e di non-degenerazione; primo in Lean per quanto ci risulta | ✅ kernel puro | Claude (Anthropic) |
+| [`Morley.lean`](UnicoProofs/Morley.lean) | **Teorema delle trisettrici di Morley** (Wiedijk n. 84) — enunciato geometrico, con i compagni `∃!` e di non-degenerazione; formalizzazione indipendente (si veda la nota di prior art: risolto in precedenza sul [benchmark lean-eval](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ kernel puro | Claude (Anthropic) |
 | [`Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Problema di Erdős 1064, variante k2** — esistono infiniti `n` con `φ(n) < φ(n − φ(n))` (Grytczuk–Luca–Wójtowicz 2001; dimostrazione equivalente indipendente in [lean-genius](https://github.com/rjwalters/lean-genius), 8 luglio 2026 — si veda la nota di prior art nel file) | ✅ kernel puro | Aristotle (Harmonic AI) |
 | [`Erdos1148Counterexample.lean`](UnicoProofs/Erdos1148Counterexample.lean) | **Problema di Erdős 1148** — `6563` non è rappresentabile come `x² + y² − z²` con `max(x², y², z²) ≤ 6563` (il più grande intero noto con questa proprietà) | ⚙️ compilatore | Claude (Anthropic) |
 

@@ -15,7 +15,7 @@ sources:
     type: "classical theorem (1899)"
     license: "public domain"
     author_contacted: "n/a"
-    prior_work: "none built upon; independent formalization. Existing formalizations in other systems: HOL Light (Harrison), Isabelle (Puyobro), Rocq (Guilhot), Mizar (Coghetto). Partial trigonometric identities (no points/rays/intersections) in https://github.com/rjwalters/lean-genius"
+    prior_work: "none built upon; independent formalization. In Lean, the leanprover lean-eval benchmark geometric morley_theorem had already been solved by several AI systems between 2026-06-10 and 2026-07-11 (https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem — kindly pointed out by Jeremy Chen on the Lean Zulip within an hour of our announcement; record corrected 2026-07-13). Partial trigonometric identities (no points/rays/intersections) in https://github.com/rjwalters/lean-genius. Other systems: HOL Light (Harrison), Isabelle (Puyobro), Rocq (Guilhot), Mizar (Coghetto)"
   - title: "A new proof of Morley's theorem"
     authors: ["Alain Connes"]
     id: "https://doi.org/10.1007/BF02698689"
@@ -107,8 +107,12 @@ review:
     Kernel-checked on two independent machines. Statement fidelity (does the
     formal statement say what Morley's theorem says?) adversarially reviewed
     by an independent LLM, which found no loopholes. Community review
-    requested on the Lean Zulip (#maths, topic "Morley's theorem (#84):
-    AI-generated proof, please check", 2026-07-13).
+    requested on the Lean Zulip (topic "Morley's theorem (#84): AI-generated
+    proof, please check", 2026-07-13; moved to #AI authored projects).
+    First community feedback (J. Chen): the statement "looks okay" at first
+    glance, stated in ℂ rather than in full generality (abstract Euclidean
+    spaces suggested as future work); lean-eval prior art pointed out and
+    acknowledged, record corrected the same day.
 
 alignment:
   namespace: ""

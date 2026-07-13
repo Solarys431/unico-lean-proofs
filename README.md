@@ -22,7 +22,7 @@ than a longer list of green check marks.
 
 ## Highlight — Morley's Trisector Theorem (Wiedijk #84)
 
-*First geometric formalization in Lean, to our knowledge (July 12, 2026).*
+*An independent geometric formalization in Lean (July 12, 2026) — see the prior-art note below.*
 
 > In any non-degenerate triangle, the three intersection points of adjacent
 > angle trisectors form an equilateral triangle. — F. Morley, 1899
@@ -45,13 +45,19 @@ classical loopholes: [`morley_esistenza_classico`](UnicoProofs/Morley.lean)
 [`morley_non_degenere_classico`](UnicoProofs/Morley.lean) (the three points are
 **pairwise distinct** — a genuine triangle, never a collapsed one).
 
-Morley's theorem is #84 on [Freek Wiedijk's list](https://www.cs.ru.nl/~freek/100/)
-and was listed among the [16 theorems not yet formalized in Lean](https://leanprover-community.github.io/100-missing.html)
-as of July 12, 2026. Previous formalizations in other systems: HOL Light
-(Harrison), Isabelle (Puyobro), Rocq (Guilhot), Mizar (Coghetto). Partial
-*trigonometric* identities about Morley side lengths (with no points, rays or
-intersections) existed in [lean-genius](https://github.com/rjwalters/lean-genius);
-see the prior-art notes inside the file.
+**Prior-art note (July 13, 2026).** Morley's theorem is #84 on
+[Freek Wiedijk's list](https://www.cs.ru.nl/~freek/100/) and was listed among
+the [16 theorems not yet formalized in Lean](https://leanprover-community.github.io/100-missing.html)
+at publication time — but within an hour of the announcement, Jeremy Chen on
+the Lean Zulip kindly pointed out the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem),
+whose geometric `morley_theorem` had already been solved by several AI systems
+between June 10 and July 11, 2026. **So this is not the first geometric
+formalization of Morley's theorem in Lean**, and we are glad to correct the
+record. It remains an independent formalization with a different statement
+(oriented rays via `arg`/3 in ℂ) and with `∃!`/non-degeneracy companions the
+benchmark statement does not ask for. Other systems: HOL Light (Harrison),
+Isabelle (Puyobro), Rocq (Guilhot), Mizar (Coghetto); partial trigonometric
+identities in [lean-genius](https://github.com/rjwalters/lean-genius).
 
 **Trust: pure kernel** — 0 `sorry`, 0 custom axioms, no compiler-trusted
 evaluation. Tagged [`morley-2026-07-12`](https://github.com/Solarys431/unico-lean-proofs/releases/tag/morley-2026-07-12).
@@ -62,7 +68,7 @@ evaluation. Tagged [`morley-2026-07-12`](https://github.com/Solarys431/unico-lea
 
 | File | Statement | Trust | Proof author |
 |------|-----------|:-----:|--------------|
-| [`Morley.lean`](UnicoProofs/Morley.lean) | **Morley's trisector theorem** (Wiedijk #84) — geometric statement, with `∃!` and non-degeneracy companions; first in Lean to our knowledge | ✅ pure kernel | Claude (Anthropic) |
+| [`Morley.lean`](UnicoProofs/Morley.lean) | **Morley's trisector theorem** (Wiedijk #84) — geometric statement, with `∃!` and non-degeneracy companions; independent formalization (see prior-art note: solved earlier on the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ pure kernel | Claude (Anthropic) |
 | [`Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Erdős Problem 1064, variant k2** — infinitely many `n` with `φ(n) < φ(n − φ(n))` (Grytczuk–Luca–Wójtowicz 2001; independent equivalent proof in [lean-genius](https://github.com/rjwalters/lean-genius), July 8, 2026 — see prior-art note in file) | ✅ pure kernel | Aristotle (Harmonic AI) |
 | [`Erdos1148Counterexample.lean`](UnicoProofs/Erdos1148Counterexample.lean) | **Erdős Problem 1148** — `6563` is not representable as `x² + y² − z²` with `max(x², y², z²) ≤ 6563` (largest such integer known) | ⚙️ compiler | Claude (Anthropic) |
 

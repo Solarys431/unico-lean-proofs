@@ -16,24 +16,32 @@ limitations under the License.
 import Mathlib
 
 /-!
-# Morley's Trisector Theorem (Wiedijk #84) — first geometric formalization in Lean
+# Morley's Trisector Theorem (Wiedijk #84) — an independent geometric formalization in Lean
 
 **Statement.** In any non-degenerate triangle in the complex plane (vertices
 `A B C : ℂ`, not collinear), the three intersection points of adjacent angle
 trisectors form an equilateral triangle.
 
-As of July 12, 2026, Morley's theorem is listed among the 16 theorems of
+**Prior-art note (updated July 13, 2026).** At publication time (July 12,
+2026) Morley's theorem was listed among the 16 theorems of
 [Freek Wiedijk's list](https://www.cs.ru.nl/~freek/100/) not yet formalized in
-Lean ([tracking page](https://leanprover-community.github.io/100-missing.html)).
-Existing formalizations: HOL Light (Harrison), Isabelle (Puyobro), Rocq
-(Guilhot), Mizar (Coghetto). This file provides, to our knowledge, the first
-formalization in Lean with a genuinely *geometric* statement: trisectors are
-defined as rays (`raggio`/`trisettore`), the Morley points are hypotheses of
-membership in the ray intersections, and the conclusion is about distances
-between actual points of `ℂ`. (Partial *trigonometric* identities about Morley
-side lengths — with no points, rays or intersections — existed previously in
-[rjwalters/lean-genius](https://github.com/rjwalters/lean-genius); see its own
-`MorleysTheoremOQ01.lean` summary for the explicitly stated remaining gap.)
+Lean ([tracking page](https://leanprover-community.github.io/100-missing.html));
+this file was announced as, to our knowledge, the first geometric
+formalization in Lean. Within an hour, Jeremy Chen on the Lean Zulip kindly
+pointed out the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem),
+whose geometric `morley_theorem` (points of `EuclideanSpace ℝ (Fin 2)`,
+unoriented angle-trisection hypotheses, convex-hull containment) had already
+been solved by several AI systems between June 10 and July 11, 2026. So
+**this is not the first geometric formalization of Morley's theorem in Lean**,
+and we are glad to correct the record. This file remains an independent
+formalization with a different statement — trisectors as oriented rays (via
+`arg`/3) in the complex plane, so a single definition covers both
+orientations — and with companions the benchmark statement does not ask for:
+existence and uniqueness of each trisector intersection (`∃!`) and pairwise
+distinctness of the Morley points. Other systems: HOL Light (Harrison),
+Isabelle (Puyobro), Rocq (Guilhot), Mizar (Coghetto); earlier partial
+*trigonometric* identities (no points, rays or intersections) in
+[rjwalters/lean-genius](https://github.com/rjwalters/lean-genius).
 
 ## Main results
 
