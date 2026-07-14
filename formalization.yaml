@@ -37,14 +37,24 @@ sources:
 status:
   scope: >-
     Small standalone repository of machine-verified results produced by an
-    autonomous certification pipeline. Main object: a geometric formalization
-    of Morley's trisector theorem in the complex plane (public statement with
-    trisectors as rays, plus existence/uniqueness and non-degeneracy
-    companions). Also contains two Erdős-problem items.
+    autonomous certification pipeline. Two main objects: Feuerbach's theorem
+    (Wiedijk #29), in the classical two-part form, stated in an abstract
+    2-dimensional Euclidean plane; and a geometric formalization of Morley's
+    trisector theorem in the complex plane (public statement with trisectors
+    as rays, plus existence/uniqueness and non-degeneracy companions). Also
+    contains two Erdős-problem items.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Classical.choice", "Quot.sound", "Lean.ofReduceBool (Erdos1148Counterexample only, via native_decide)"]
   main_results:
+    - declaration: "feuerbach_insphere"
+      file: "UnicoProofs/Feuerbach/Main.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "feuerbach_exsphere"
+      file: "UnicoProofs/Feuerbach/Main.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
     - declaration: "morley_classico"
       file: "UnicoProofs/Morley.lean"
       sorry_count: 0
@@ -68,6 +78,28 @@ status:
 
 automation:
   methods:
+    - method: "agent"
+      models: ["claude (Anthropic, 2026 models)", "gpt-5.6-sol (OpenAI, adversarial gating only)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Feuerbach: prior-art gate → derivation of the algebraic identities in
+        sympy → adversarial review of the intended route by an independent LLM
+        (gpt-5.6-sol), which found four gaps in the first plan; all were
+        addressed before any Lean was written → proof construction, kernel as
+        sole gatekeeper. Route: a tangential normalization sending the in- or
+        excircle to the unit circle, so the three touchpoints have modulus one
+        and parametrize the configuration; barycentric sign certificates
+        (derived from mathlib's excenterWeights) pin the sign of the tangency
+        parameter W; extracted metric lemmas turn that sign into internal
+        tangency (W ≤ −1) or external tangency. The rational identities are
+        closed by linear_combination with sympy-generated cofactors. The
+        statement reuses mathlib's own notions throughout (ninePointCircle,
+        insphere/exsphere, IsIntTangent/IsExtTangent), so nothing about the
+        objects being related is defined by us.
+      cost:
+        wall_time: "Feuerbach: ~3.5 h end-to-end (2026-07-13, 20:09–23:35 CEST), first module to both final theorems"
+        spend_usd: "subscription-based usage"
+        hardware: "consumer Apple Silicon machine; models API-only"
     - method: "agent"
       models: ["claude (Anthropic, 2026 models)"]
       framework: "Claude Code"
@@ -96,6 +128,24 @@ automation:
 
 fidelity:
   divergences: >-
+    Feuerbach: stated in an abstract Euclidean plane — a real inner-product
+    space V with [Fact (finrank ℝ V = 2)] and its affine torsor P — not in ℂ.
+    No non-degeneracy hypothesis appears: Affine.Triangle carries affine
+    independence by construction. The circle in the statement is mathlib's own
+    Affine.Simplex.ninePointCircle, whose defining incidences are already
+    library theorems (faceOppositeCentroid_mem_ninePointCircle for the three
+    side midpoints, altitudeFoot_mem_ninePointCircle for the three feet of the
+    altitudes, eulerPoint_mem_ninePointCircle for the three Euler points), and
+    tangency is mathlib's Sphere.IsIntTangent / Sphere.IsExtTangent. Neither
+    the circle nor the tangency predicates are ours, so the statement is
+    Feuerbach's theorem itself and not an assertion about a circle we defined.
+    The incircle is the empty-signs excircle (t.insphere = t.exsphere ∅,
+    definitionally), which is how the four tangencies share one proof.
+    Both halves of the classical statement are covered (internal tangency to
+    the incircle; external tangency to each of the three excircles). What is
+    NOT claimed: the points of tangency are not named or identified — the
+    Feuerbach point does not appear in the statement.
+
     Morley: stated in the complex plane ℂ rather than an abstract Euclidean
     plane. Trisectors are open rays (vertex excluded) with direction obtained
     by rotating the side by one third of the signed angle (Complex.arg), so a
@@ -106,7 +156,7 @@ fidelity:
     Identifiers and inline comments are in Italian; file headers in English.
 
 review:
-  status: "self-assessed + agent-reviewed; community review requested"
+  status: "self-assessed + agent-reviewed; community review requested for Morley, not yet for Feuerbach"
   reviewers:
     - "Lean kernel (local certifier + GitHub Actions CI on pinned toolchain v4.32.0-rc1)"
     - "OpenAI Codex gpt-5.6 (adversarial statement-fidelity review, xhigh reasoning)"
@@ -121,9 +171,24 @@ review:
     spaces suggested as future work); lean-eval prior art pointed out and
     acknowledged, record corrected the same day.
 
+    Feuerbach: kernel-checked locally and re-verified by GitHub Actions CI on
+    the same pinned toolchain. The proof route was adversarially reviewed by an
+    independent LLM (gpt-5.6-sol) BEFORE construction, which rejected the first
+    plan (four gaps). Community review has NOT yet been requested for
+    Feuerbach; the statement is, however, in the abstract Euclidean generality
+    that the Morley feedback suggested as future work.
+
 alignment:
   namespace: ""
   statements:
+    - source: "Feuerbach's theorem, internal part: the nine-point circle of a triangle is internally tangent to its incircle"
+      lean: "feuerbach_insphere"
+      module: "UnicoProofs/Feuerbach/Main.lean"
+      status: "proved"
+    - source: "Feuerbach's theorem, external part: the nine-point circle is externally tangent to each of the three excircles"
+      lean: "feuerbach_exsphere"
+      module: "UnicoProofs/Feuerbach/Main.lean"
+      status: "proved"
     - source: "Morley's trisector theorem (adjacent trisectors of a non-degenerate triangle meet in an equilateral triangle)"
       lean: "morley_classico"
       module: "UnicoProofs/Morley.lean"
