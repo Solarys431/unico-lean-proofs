@@ -1,7 +1,11 @@
 /-
-Copyright (c) 2026 Solarys431. All rights reserved.
+Copyright (c) 2026 Daniele Cappello. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
-Authors: Solarys431
+Authors: Daniele Cappello
+
+A Lean formalization of the Sylvester–Gallai theorem, produced by the
+UNICO/NOUS autonomous certification pipeline (Claude, by Anthropic).
+Every step is kernel-checked.
 -/
 import Mathlib
 
