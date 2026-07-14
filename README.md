@@ -20,6 +20,48 @@ than a longer list of green check marks.
 
 ---
 
+## Highlight — The Sylvester–Gallai Theorem
+
+*Proved July 14, 2026 by the UNICO / NOUS autonomous certification pipeline —
+in a ninety-minute evening session.*
+
+> A finite set of points in the plane, not all on one line, always admits an
+> *ordinary line*: a line passing through exactly two of the points.
+> — conjectured by J. J. Sylvester (1893), proved by T. Gallai (1944)
+
+```lean
+theorem sylvester_gallai (S : Set P) (hfin : S.Finite) (hncol : ¬ Collinear ℝ S) :
+    ∃ a ∈ S, ∃ b ∈ S, IsOrdinaryLine S a b
+```
+
+The statement holds in any real inner-product space with its affine torsor, with
+**no dimension hypothesis**. The proof is Kelly's (1948), made purely vectorial:
+no areas, no angles, no similar triangles — only the inner product. The strict
+inequality driving the minimal-distance argument is the one-line computation
+`⟪A, w⟫ = ‖A‖² > 0` (the minimizing point is not the foot of the perpendicular),
+and the pigeonhole step is isolated as a lemma about three distinct **real**
+numbers — exactly where the proof must use the order of ℝ, since the theorem is
+**false over ℂ** (the Hesse configuration). A satisfiability witness (a concrete
+non-collinear triangle) accompanies the development, so the theorem is not
+vacuously true.
+
+**Prior art & novelty.** At publication time the theorem is not in mathlib, and
+chapter 11 of the [Formal Book project](https://github.com/mo271/FormalBook)
+("Lines in the plane") is an open TODO. A Lean 3 development exists
+([Happyves/Master_Thesis](https://github.com/Happyves/Master_Thesis), containing
+a `sorry`). In Lean 4, [Yaël Dillies' misc-yd](https://github.com/YaelDillies/misc-yd)
+proves the **Sylvester–Chvátal theorem** (Chen's 2006 generalization to finite
+metric spaces, with betweenness lines); its Euclidean corollary — the classical
+statement proved here — is sketched there in a commented-out block containing a
+`sorry`. To our knowledge the classical Euclidean statement had not previously
+been formalized in Lean 4; we make no priority claim beyond the commit date.
+
+**Trust: pure kernel** — 0 `sorry`, 0 custom axioms; all declarations in
+[`UnicoProofs/SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) depend on
+`[propext, Classical.choice, Quot.sound]` only. Verify with `lake build`.
+
+---
+
 ## Highlight — Feuerbach's Theorem (Wiedijk #29)
 
 *The classical statement, in full, proved July 13, 2026 by the UNICO / NOUS
@@ -122,6 +164,7 @@ evaluation. Tagged [`morley-2026-07-12`](https://github.com/Solarys431/unico-lea
 
 | File | Statement | Trust | Proof author |
 |------|-----------|:-----:|--------------|
+| [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **The Sylvester–Gallai theorem** — a finite non-collinear point set always admits a line through exactly two of its points; Kelly's proof made purely vectorial, no dimension hypothesis (see prior-art note: Sylvester–Chvátal exists in Lean 4, the classical Euclidean statement did not) | ✅ pure kernel | Claude (Anthropic) |
 | [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Feuerbach's theorem** (Wiedijk #29) — nine-point circle internally tangent to the incircle (`feuerbach_insphere`) and externally tangent to the three excircles (`feuerbach_exsphere`); independent proof, 11 modules | ✅ pure kernel | Claude (Anthropic) |
 | [`Morley.lean`](UnicoProofs/Morley.lean) | **Morley's trisector theorem** (Wiedijk #84) — geometric statement, with `∃!` and non-degeneracy companions; independent formalization (see prior-art note: solved earlier on the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ pure kernel | Claude (Anthropic) |
 | [`Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Erdős Problem 1064, variant k2** — infinitely many `n` with `φ(n) < φ(n − φ(n))` (Grytczuk–Luca–Wójtowicz 2001; independent equivalent proof in [lean-genius](https://github.com/rjwalters/lean-genius), July 8, 2026 — see prior-art note in file) | ✅ pure kernel | Aristotle (Harmonic AI) |

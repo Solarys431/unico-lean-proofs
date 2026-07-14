@@ -9,6 +9,23 @@ project:
   license: "Apache-2.0"
 
 sources:
+  - title: "The Sylvester–Gallai theorem"
+    authors:
+      - "James Joseph Sylvester"
+      - "Tibor Gallai"
+    id: "https://en.wikipedia.org/wiki/Sylvester%E2%80%93Gallai_theorem"
+    type: "classical theorem (conjectured 1893, proved 1944; Kelly's proof 1948)"
+    license: "public domain"
+    author_contacted: "n/a"
+    prior_work: >-
+      Independent proof (2026-07-14). Not in mathlib; chapter 11 of the Formal Book
+      project is an open TODO. A Lean 3 development exists (Happyves/Master_Thesis,
+      containing a sorry). In Lean 4, YaelDillies/misc-yd proves the Sylvester–Chvátal
+      theorem (Chen 2006, finite metric spaces, betweenness lines); its Euclidean
+      corollary is sketched there in a commented-out block with a sorry. Our route:
+      Kelly's proof made purely vectorial (inner product only), pigeonhole isolated
+      over the reals, minimum taken over point triples so that the distance notion
+      matches the core lemma by construction.
   - title: "Feuerbach's theorem (Wiedijk #29)"
     authors: ["Karl Wilhelm Feuerbach"]
     id: "https://www.cs.ru.nl/~freek/100/ (entry 29)"
@@ -37,7 +54,7 @@ sources:
 status:
   scope: >-
     Small standalone repository of machine-verified results produced by an
-    autonomous certification pipeline. Two main objects: Feuerbach's theorem
+    autonomous certification pipeline. Three main objects: the Sylvester–Gallai theorem (finite non-collinear point sets admit an ordinary line, proved in any real inner-product torsor with no dimension hypothesis); Feuerbach's theorem
     (Wiedijk #29), in the classical two-part form, stated in an abstract
     2-dimensional Euclidean plane; and a geometric formalization of Morley's
     trisector theorem in the complex plane (public statement with trisectors
@@ -47,6 +64,13 @@ status:
   sorry_in_definitions: 0
   axioms: ["propext", "Classical.choice", "Quot.sound", "Lean.ofReduceBool (Erdos1148Counterexample only, via native_decide)"]
   main_results:
+    - declaration: "SylvesterGallai.sylvester_gallai"
+      file: "UnicoProofs/SylvesterGallai.lean"
+      sorry_count: 0
+      axioms:
+        - propext
+        - Classical.choice
+        - Quot.sound
     - declaration: "feuerbach_insphere"
       file: "UnicoProofs/Feuerbach/Main.lean"
       sorry_count: 0
@@ -156,7 +180,7 @@ fidelity:
     Identifiers and inline comments are in Italian; file headers in English.
 
 review:
-  status: "self-assessed + agent-reviewed; community review requested for Morley, not yet for Feuerbach"
+  status: "self-assessed + agent-reviewed; community review requested for Morley, not yet for Feuerbach or Sylvester–Gallai"
   reviewers:
     - "Lean kernel (local certifier + GitHub Actions CI on pinned toolchain v4.32.0-rc1)"
     - "OpenAI Codex gpt-5.6 (adversarial statement-fidelity review, xhigh reasoning)"
@@ -181,6 +205,10 @@ review:
 alignment:
   namespace: ""
   statements:
+    - source: "Sylvester–Gallai: a finite set of points, not all collinear, admits a line through exactly two of them"
+      lean: "SylvesterGallai.sylvester_gallai"
+      module: "UnicoProofs/SylvesterGallai.lean"
+      status: "proved"
     - source: "Feuerbach's theorem, internal part: the nine-point circle of a triangle is internally tangent to its incircle"
       lean: "feuerbach_insphere"
       module: "UnicoProofs/Feuerbach/Main.lean"

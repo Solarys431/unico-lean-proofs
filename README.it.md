@@ -21,6 +21,51 @@ conta più di una lista più lunga di spunte verdi.
 
 ---
 
+## In evidenza — Il teorema di Sylvester–Gallai
+
+*Dimostrato il 14 luglio 2026 dalla pipeline di certificazione autonoma
+UNICO / NOUS, in una sessione serale di novanta minuti.*
+
+> Un insieme finito di punti del piano, non tutti su una stessa retta, ammette
+> sempre una *retta ordinaria*: una retta che passa per esattamente due dei
+> punti. — congetturato da J. J. Sylvester (1893), dimostrato da T. Gallai (1944)
+
+```lean
+theorem sylvester_gallai (S : Set P) (hfin : S.Finite) (hncol : ¬ Collinear ℝ S) :
+    ∃ a ∈ S, ∃ b ∈ S, IsOrdinaryLine S a b
+```
+
+L'enunciato vale in ogni spazio reale con prodotto interno, col suo torsore
+affine, **senza alcuna ipotesi di dimensione**. La dimostrazione è quella di
+Kelly (1948), resa puramente vettoriale: niente aree, niente angoli, niente
+triangoli simili; solo il prodotto interno. La disuguaglianza stretta che regge
+l'argomento della distanza minima esce da un calcolo di una riga
+(`⟪A, w⟫ = ‖A‖² > 0`: il punto minimizzante non è il piede della
+perpendicolare), e il principio dei cassetti è isolato in un lemma su tre
+numeri **reali** distinti; è esattamente lì che la dimostrazione deve usare
+l'ordine di ℝ, perché il teorema è **falso su ℂ** (configurazione di Hesse).
+Un testimone di soddisfacibilità (un triangolo concreto non allineato)
+accompagna lo sviluppo: il teorema non è vero per vacuità.
+
+**Prior art e novità.** Al momento della pubblicazione il teorema non è in
+mathlib, e il capitolo 11 del [progetto Formal Book](https://github.com/mo271/FormalBook)
+(«Lines in the plane») è un TODO aperto. Esiste uno sviluppo in Lean 3
+([Happyves/Master_Thesis](https://github.com/Happyves/Master_Thesis), con un
+`sorry`). In Lean 4, il repository [misc-yd di Yaël Dillies](https://github.com/YaelDillies/misc-yd)
+dimostra il **teorema di Sylvester–Chvátal** (la generalizzazione di Chen, 2006,
+agli spazi metrici finiti, con rette definite per chiusura di interposizione);
+il suo corollario euclideo — l'enunciato classico dimostrato qui — vi è
+abbozzato in un blocco commentato contenente un `sorry`. Per quanto ne
+sappiamo, l'enunciato euclideo classico non era mai stato formalizzato in
+Lean 4; non rivendichiamo alcuna priorità oltre la data del commit.
+
+**Fiducia: kernel puro** — 0 `sorry`, 0 assiomi custom; tutte le dichiarazioni
+di [`UnicoProofs/SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean)
+dipendono soltanto da `[propext, Classical.choice, Quot.sound]`. Verifica con
+`lake build`.
+
+---
+
 ## In evidenza — Teorema di Feuerbach (Wiedijk #29)
 
 *L'enunciato classico, completo, dimostrato il 13 luglio 2026 dalla pipeline
@@ -128,6 +173,7 @@ valutazione affidata al compilatore. Tag
 
 | File | Enunciato | Fiducia | Autore della dimostrazione |
 |------|-----------|:-------:|----------------------------|
+| [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **Teorema di Sylvester–Gallai** — un insieme finito di punti non tutti allineati ammette sempre una retta che ne contiene esattamente due; dimostrazione di Kelly resa puramente vettoriale, senza ipotesi di dimensione (si veda la nota di prior art: Sylvester–Chvátal esiste in Lean 4, l'enunciato euclideo classico no) | ✅ kernel puro | Claude (Anthropic) |
 | [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Teorema di Feuerbach** (Wiedijk #29) — circonferenza dei nove punti tangente internamente all'inscritto (`feuerbach_insphere`) ed esternamente ai tre exinscritti (`feuerbach_exsphere`); dimostrazione indipendente, 11 moduli | ✅ kernel puro | Claude (Anthropic) |
 | [`Morley.lean`](UnicoProofs/Morley.lean) | **Teorema delle trisettrici di Morley** (Wiedijk n. 84) — enunciato geometrico, con i compagni `∃!` e di non-degenerazione; formalizzazione indipendente (si veda la nota di prior art: risolto in precedenza sul [benchmark lean-eval](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ kernel puro | Claude (Anthropic) |
 | [`Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Problema di Erdős 1064, variante k2** — esistono infiniti `n` con `φ(n) < φ(n − φ(n))` (Grytczuk–Luca–Wójtowicz 2001; dimostrazione equivalente indipendente in [lean-genius](https://github.com/rjwalters/lean-genius), 8 luglio 2026 — si veda la nota di prior art nel file) | ✅ kernel puro | Aristotle (Harmonic AI) |
