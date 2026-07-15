@@ -171,13 +171,13 @@ valutazione affidata al compilatore. Tag
 
 ## Tutte le dimostrazioni
 
-| File | Enunciato | Fiducia | Autore della dimostrazione |
-|------|-----------|:-------:|----------------------------|
-| [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **Teorema di Sylvester–Gallai** — un insieme finito di punti non tutti allineati ammette sempre una retta che ne contiene esattamente due; dimostrazione di Kelly resa puramente vettoriale, senza ipotesi di dimensione (si veda la nota di prior art: Sylvester–Chvátal esiste in Lean 4, l'enunciato euclideo classico no) | ✅ kernel puro | UNICO / NOUS (Claude, Anthropic) |
-| [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Teorema di Feuerbach** (Wiedijk #29) — circonferenza dei nove punti tangente internamente all'inscritto (`feuerbach_insphere`) ed esternamente ai tre exinscritti (`feuerbach_exsphere`); dimostrazione indipendente, 11 moduli | ✅ kernel puro | UNICO / NOUS (Claude, Anthropic) |
-| [`Morley.lean`](UnicoProofs/Morley.lean) | **Teorema delle trisettrici di Morley** (Wiedijk n. 84) — enunciato geometrico, con i compagni `∃!` e di non-degenerazione; formalizzazione indipendente (si veda la nota di prior art: risolto in precedenza sul [benchmark lean-eval](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ kernel puro | UNICO / NOUS (Claude, Anthropic) |
-| [`Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Problema di Erdős 1064, variante k2** — esistono infiniti `n` con `φ(n) < φ(n − φ(n))` (Grytczuk–Luca–Wójtowicz 2001; dimostrazione equivalente indipendente in [lean-genius](https://github.com/rjwalters/lean-genius), 8 luglio 2026 — si veda la nota di prior art nel file) | ✅ kernel puro | Aristotle (Harmonic AI) |
-| [`Erdos1148Counterexample.lean`](UnicoProofs/Erdos1148Counterexample.lean) | **Problema di Erdős 1148** — `6563` non è rappresentabile come `x² + y² − z²` con `max(x², y², z²) ≤ 6563` (il più grande intero noto con questa proprietà) | ⚙️ compilatore | UNICO / NOUS (Claude, Anthropic) |
+| File | Enunciato | Fiducia | Verifica | Autore della dimostrazione |
+|------|-----------|:-------:|:------:|----------------------------|
+| [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **Teorema di Sylvester–Gallai** — un insieme finito di punti non tutti allineati ammette sempre una retta che ne contiene esattamente due; dimostrazione di Kelly resa puramente vettoriale, senza ipotesi di dimensione (si veda la nota di prior art: Sylvester–Chvátal esiste in Lean 4, l'enunciato euclideo classico no) | ✅ kernel puro | [comparator](comparator/sylvester_gallai/) | UNICO / NOUS (Claude, Anthropic) |
+| [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Teorema di Feuerbach** (Wiedijk #29) — circonferenza dei nove punti tangente internamente all'inscritto (`feuerbach_insphere`) ed esternamente ai tre exinscritti (`feuerbach_exsphere`); dimostrazione indipendente, 11 moduli | ✅ kernel puro | [comparator](comparator/feuerbach/) | UNICO / NOUS (Claude, Anthropic) |
+| [`Morley.lean`](UnicoProofs/Morley.lean) | **Teorema delle trisettrici di Morley** (Wiedijk n. 84) — enunciato geometrico, con i compagni `∃!` e di non-degenerazione; formalizzazione indipendente (si veda la nota di prior art: risolto in precedenza sul [benchmark lean-eval](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ kernel puro | [comparator](lean-eval/morley_theorem/) | UNICO / NOUS (Claude, Anthropic) |
+| [`Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Problema di Erdős 1064, variante k2** — esistono infiniti `n` con `φ(n) < φ(n − φ(n))` (Grytczuk–Luca–Wójtowicz 2001; dimostrazione equivalente indipendente in [lean-genius](https://github.com/rjwalters/lean-genius), 8 luglio 2026 — si veda la nota di prior art nel file) | ✅ kernel puro | — | Aristotle (Harmonic AI) |
+| [`Erdos1148Counterexample.lean`](UnicoProofs/Erdos1148Counterexample.lean) | **Problema di Erdős 1148** — `6563` non è rappresentabile come `x² + y² − z²` con `max(x², y², z²) ≤ 6563` (il più grande intero noto con questa proprietà) | ⚙️ compilatore | — | UNICO / NOUS (Claude, Anthropic) |
 
 Ogni file porta nell'intestazione le proprie note di provenienza e di prior art.
 
@@ -196,6 +196,25 @@ Toolchain: `leanprover/lean4:v4.32.0-rc1` · mathlib fissata da
 [workflow di CI](.github/workflows/build.yml) esegue esattamente questa
 compilazione a ogni push: il badge in cima alla pagina è la verifica pubblica
 e indipendente.
+
+## Verifica indipendente con Comparator
+
+Compilare l'intero progetto richiede di fidarsi del nostro `lake`. Per un controllo più forte e
+indipendente dall'ambiente, tre teoremi includono un workspace [Comparator](https://github.com/leanprover/comparator)
+autoconsistente ([`comparator/`](comparator/)): si legge un breve `Challenge.lean` per vedere *cosa*
+si afferma, poi un comando conferma che la prova stabilisce *esattamente* quell'enunciato, usa solo
+gli assiomi standard ed è accettata dal kernel — senza leggere l'intera dimostrazione.
+
+```bash
+cd comparator/sylvester_gallai   # oppure feuerbach
+lake exe cache get
+lake env comparator config.json  # stampa: Your solution is okay!
+```
+
+Passano tutti e tre (`sylvester_gallai`, `feuerbach`, `morley_theorem`). Entrambi i workspace di
+geometria sono stati verificati con il sandbox Landlock reale `landrun` su Linux (kernel 7.0,
+Landlock ABI 8), non solo col controllo del kernel — la stessa garanzia che ottiene un revisore
+sulla propria macchina.
 
 ## Metodo
 

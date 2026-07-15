@@ -162,13 +162,13 @@ evaluation. Tagged [`morley-2026-07-12`](https://github.com/Solarys431/unico-lea
 
 ## All proofs
 
-| File | Statement | Trust | Proof author |
-|------|-----------|:-----:|--------------|
-| [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **The Sylvester–Gallai theorem** — a finite non-collinear point set always admits a line through exactly two of its points; Kelly's proof made purely vectorial, no dimension hypothesis (see prior-art note: Sylvester–Chvátal exists in Lean 4, the classical Euclidean statement did not) | ✅ pure kernel | UNICO / NOUS (Claude, Anthropic) |
-| [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Feuerbach's theorem** (Wiedijk #29) — nine-point circle internally tangent to the incircle (`feuerbach_insphere`) and externally tangent to the three excircles (`feuerbach_exsphere`); independent proof, 11 modules | ✅ pure kernel | UNICO / NOUS (Claude, Anthropic) |
-| [`Morley.lean`](UnicoProofs/Morley.lean) | **Morley's trisector theorem** (Wiedijk #84) — geometric statement, with `∃!` and non-degeneracy companions; independent formalization (see prior-art note: solved earlier on the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ pure kernel | UNICO / NOUS (Claude, Anthropic) |
-| [`Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Erdős Problem 1064, variant k2** — infinitely many `n` with `φ(n) < φ(n − φ(n))` (Grytczuk–Luca–Wójtowicz 2001; independent equivalent proof in [lean-genius](https://github.com/rjwalters/lean-genius), July 8, 2026 — see prior-art note in file) | ✅ pure kernel | Aristotle (Harmonic AI) |
-| [`Erdos1148Counterexample.lean`](UnicoProofs/Erdos1148Counterexample.lean) | **Erdős Problem 1148** — `6563` is not representable as `x² + y² − z²` with `max(x², y², z²) ≤ 6563` (largest such integer known) | ⚙️ compiler | UNICO / NOUS (Claude, Anthropic) |
+| File | Statement | Trust | Verify | Proof author |
+|------|-----------|:-----:|:------:|--------------|
+| [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **The Sylvester–Gallai theorem** — a finite non-collinear point set always admits a line through exactly two of its points; Kelly's proof made purely vectorial, no dimension hypothesis (see prior-art note: Sylvester–Chvátal exists in Lean 4, the classical Euclidean statement did not) | ✅ pure kernel | [comparator](comparator/sylvester_gallai/) | UNICO / NOUS (Claude, Anthropic) |
+| [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Feuerbach's theorem** (Wiedijk #29) — nine-point circle internally tangent to the incircle (`feuerbach_insphere`) and externally tangent to the three excircles (`feuerbach_exsphere`); independent proof, 11 modules | ✅ pure kernel | [comparator](comparator/feuerbach/) | UNICO / NOUS (Claude, Anthropic) |
+| [`Morley.lean`](UnicoProofs/Morley.lean) | **Morley's trisector theorem** (Wiedijk #84) — geometric statement, with `∃!` and non-degeneracy companions; independent formalization (see prior-art note: solved earlier on the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ pure kernel | [comparator](lean-eval/morley_theorem/) | UNICO / NOUS (Claude, Anthropic) |
+| [`Erdos1064K2.lean`](UnicoProofs/Erdos1064K2.lean) | **Erdős Problem 1064, variant k2** — infinitely many `n` with `φ(n) < φ(n − φ(n))` (Grytczuk–Luca–Wójtowicz 2001; independent equivalent proof in [lean-genius](https://github.com/rjwalters/lean-genius), July 8, 2026 — see prior-art note in file) | ✅ pure kernel | — | Aristotle (Harmonic AI) |
+| [`Erdos1148Counterexample.lean`](UnicoProofs/Erdos1148Counterexample.lean) | **Erdős Problem 1148** — `6563` is not representable as `x² + y² − z²` with `max(x², y², z²) ≤ 6563` (largest such integer known) | ⚙️ compiler | — | UNICO / NOUS (Claude, Anthropic) |
 
 Each file carries its own provenance and prior-art notes in the header.
 
@@ -186,6 +186,24 @@ Toolchain: `leanprover/lean4:v4.32.0-rc1` · mathlib pinned by
 [`lake-manifest.json`](lake-manifest.json). The
 [CI workflow](.github/workflows/build.yml) runs this exact build on every push
 — the badge above is the public, independent verification.
+
+## Independent verification with Comparator
+
+Building the whole project trusts our `lake` setup. For a stronger, environment-independent
+check, three theorems ship a self-contained [Comparator](https://github.com/leanprover/comparator)
+workspace ([`comparator/`](comparator/)): you read a short `Challenge.lean` to see *what* is
+claimed, then one command confirms the proof establishes *exactly* that statement, uses only the
+standard axioms, and is accepted by the Lean kernel — without reading the full proof.
+
+```bash
+cd comparator/sylvester_gallai   # or feuerbach
+lake exe cache get
+lake env comparator config.json  # prints: Your solution is okay!
+```
+
+All three (`sylvester_gallai`, `feuerbach`, `morley_theorem`) pass. Both geometry workspaces were
+verified with the real `landrun` Landlock sandbox on Linux (kernel 7.0, Landlock ABI 8), not only
+the built-in kernel check — the same guarantee a reviewer gets on their own machine.
 
 ## Methodology
 
