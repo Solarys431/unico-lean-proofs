@@ -16,6 +16,17 @@ Every symbol here is mathlib's own — `Triangle`, `insphere`, `exsphere`, `nine
 `Sphere.IsIntTangent`, `Sphere.IsExtTangent` — so a reviewer trusts the statement by reading
 these few lines. Run Comparator to check that `Solution.lean` proves these exact statements,
 using only the standard axioms.
+
+**Convention (read before judging the statement).** Tangency here is mathlib's own
+`Sphere.IsIntTangent` / `Sphere.IsExtTangent`. By mathlib's *explicit* convention
+`Sphere.IsIntTangent` counts **coincident** spheres as internally tangent
+(`s.IsIntTangent s ↔ 0 ≤ s.radius`). This matters in exactly one case: the **equilateral**
+triangle, where the incircle and the nine-point circle coincide (same center, radius `R/2`).
+There `feuerbach_insphere` holds by this convention even though the two circles share
+infinitely many points rather than one. In every non-equilateral triangle the tangency is
+proper (a single common point), and `feuerbach_exsphere` is always proper external tangency.
+We state this up front so the claim is not mistaken for the strict "single common point"
+reading on the equilateral case.
 -/
 
 open EuclideanGeometry Affine Module
