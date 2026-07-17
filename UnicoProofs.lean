@@ -3,3 +3,5 @@ import UnicoProofs.Erdos1064K2
 import UnicoProofs.Erdos1148Counterexample
 import UnicoProofs.Morley
 import UnicoProofs.Feuerbach.Main
+import UnicoProofs.Platonici.Classificazione
+import UnicoProofs.Platonici.TetraedroStadio2

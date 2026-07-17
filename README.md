@@ -31,6 +31,54 @@ verify our claims without trusting our build: see **[PIPELINE.md](PIPELINE.md)**
 
 ---
 
+## Highlight — The Platonic Solids Classification (Wiedijk #50)
+
+*The theorem that closes Euclid's Elements (XIII.18 and scholium), proved
+July 17, 2026 by the UNICO / NOUS autonomous certification pipeline — the
+full campaign, from blank page to kernel certificate, in a single day.*
+
+> A three-dimensional convex polytope whose facets are regular p-gons and
+> whose vertices are all q-cyclic satisfies q(p−2) < 2p; hence (p, q) is one
+> of the five Platonic types: (3,3), (4,3), (3,4), (5,3), (3,5).
+
+```lean
+theorem cyclicallyRegular_schlafli (P : FiniteConvexPolytope A) {p q : ℕ}
+    (h : P.IsCyclicallyRegularOfType p q) :
+    q * (p - 2) < 2 * p ∧
+    ((p = 3 ∧ q = 3) ∨ (p = 4 ∧ q = 3) ∨ (p = 3 ∧ q = 4) ∨
+     (p = 5 ∧ q = 3) ∨ (p = 3 ∧ q = 5))
+
+theorem tetraedro_cyclicallyRegular :
+    tetraedro.IsCyclicallyRegularOfType 3 3
+```
+
+The statement lives on an **abstract real inner-product space**: facet
+regularity is defined *by orbit* (an affine isometry generates the p vertices
+cyclically), with no angle or length ever postulated; the vertex fan is pure
+incidence structure. The angular inequality is the **theorem**, never an
+assumption. The witness (`tetraedro_cyclicallyRegular`) shows the predicate
+is not vacuous. Scope, stated precisely: this is the *local Schläfli-type
+classification* (necessity of the five pairs, plus one existence witness) —
+not the enumeration of all five solids, which is the declared next phase.
+
+The proof builds a small convex-polytope theory that mathlib currently lacks
+(exposed-face restriction, argmax faces of finite hulls, translated orbits,
+the planar rotation/reflection dichotomy, a cosine-argmax lemma handling
+star-polygon orbits via modular inverses) — 25 modules, 158 kernel-pure
+theorems, axioms `propext`, `Classical.choice`, `Quot.sound` only.
+
+Prior art, checked the same day: the geometric theorem exists in **HOL Light**
+(Harrison); in Lean only numerological shells were available, and the
+`Platonic classification` problem on the official
+[lean-eval leaderboard](https://leanprover.github.io/lean-eval-leaderboard/)
+is unsolved by all 41 listed models at the time of writing. To our knowledge
+this is the first geometric Platonic classification theorem certified in
+Lean 4.
+
+Modules: [`UnicoProofs/Platonici/`](UnicoProofs/Platonici/) — apex theorems in
+[`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean) and
+[`TetraedroStadio2.lean`](UnicoProofs/Platonici/TetraedroStadio2.lean).
+
 ## Highlight — The Sylvester–Gallai Theorem
 
 *Proved July 14, 2026 by the UNICO / NOUS autonomous certification pipeline —
@@ -175,6 +223,7 @@ evaluation. Tagged [`morley-2026-07-12`](https://github.com/Solarys431/unico-lea
 
 | File | Statement | Trust | Verify | Proof author |
 |------|-----------|:-----:|:------:|--------------|
+| [`Platonici/`](UnicoProofs/Platonici/) | **The Platonic solids classification** (Wiedijk #50, local Schläfli types) — 3D convex polytope with orbit-regular p-gonal facets and q-cyclic vertices ⟹ q(p−2) < 2p and (p,q) is one of the five Platonic pairs (`cyclicallyRegular_schlafli`); certified tetrahedron witness (`tetraedro_cyclicallyRegular`); 25 modules | ✅ pure kernel | — | UNICO / NOUS (Claude, Anthropic) |
 | [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **The Sylvester–Gallai theorem** — a finite non-collinear point set always admits a line through exactly two of its points; Kelly's proof made purely vectorial, no dimension hypothesis (see prior-art note: Sylvester–Chvátal exists in Lean 4, the classical Euclidean statement did not) | ✅ pure kernel | [comparator](comparator/sylvester_gallai/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Feuerbach's theorem** (Wiedijk #29) — nine-point circle internally tangent to the incircle (`feuerbach_insphere`) and externally tangent to the three excircles (`feuerbach_exsphere`); independent proof, 11 modules | ✅ pure kernel | [comparator](comparator/feuerbach/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Morley.lean`](UnicoProofs/Morley.lean) | **Morley's trisector theorem** (Wiedijk #84) — geometric statement, with `∃!` and non-degeneracy companions; independent formalization (see prior-art note: solved earlier on the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ pure kernel | [comparator](lean-eval/morley_theorem/) | UNICO / NOUS (Claude, Anthropic) |

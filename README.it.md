@@ -33,6 +33,57 @@ build: **[PIPELINE.md](PIPELINE.md)** (in inglese).
 
 ---
 
+## In evidenza — La classificazione dei solidi platonici (Wiedijk #50)
+
+*Il teorema che chiude gli Elementi di Euclide (XIII.18 e scolio), dimostrato
+il 17 luglio 2026 dalla pipeline di certificazione autonoma UNICO / NOUS — la
+campagna intera, dal foglio bianco al certificato del kernel, in un solo
+giorno.*
+
+> Un politopo convesso tridimensionale con faccette p-gonali regolari e tutti
+> i vertici q-ciclici soddisfa q(p−2) < 2p; dunque (p, q) è uno dei cinque
+> tipi platonici: (3,3), (4,3), (3,4), (5,3), (3,5).
+
+```lean
+theorem cyclicallyRegular_schlafli (P : FiniteConvexPolytope A) {p q : ℕ}
+    (h : P.IsCyclicallyRegularOfType p q) :
+    q * (p - 2) < 2 * p ∧
+    ((p = 3 ∧ q = 3) ∨ (p = 4 ∧ q = 3) ∨ (p = 3 ∧ q = 4) ∨
+     (p = 5 ∧ q = 3) ∨ (p = 3 ∧ q = 5))
+
+theorem tetraedro_cyclicallyRegular :
+    tetraedro.IsCyclicallyRegularOfType 3 3
+```
+
+L'enunciato vive su uno **spazio reale con prodotto interno astratto**: la
+regolarità delle faccette è definita *per orbita* (un'isometria affine genera
+ciclicamente i p vertici), senza mai postulare un angolo o una lunghezza; il
+fan del vertice è pura struttura di incidenza. La disuguaglianza angolare è
+il **teorema**, mai un'ipotesi. Il testimone (`tetraedro_cyclicallyRegular`)
+mostra che il predicato non è vacuo. Perimetro, detto con precisione: questa
+è la *classificazione locale dei tipi di Schläfli* (necessità delle cinque
+coppie, più un testimone di esistenza) — non l'enumerazione dei cinque
+solidi, che è la fase successiva dichiarata.
+
+La dimostrazione costruisce una piccola teoria dei politopi convessi che
+mathlib oggi non possiede (restrizione delle facce esposte, facce argmax
+degli hull finiti, orbite traslate, la dicotomia rotazione/riflessione nel
+piano, un lemma di argmax del coseno che doma i poligoni stellati con gli
+inversi modulari) — 25 moduli, 158 teoremi kernel-puri, assiomi soltanto
+`propext`, `Classical.choice`, `Quot.sound`.
+
+Anteriorità, verificata lo stesso giorno: il teorema geometrico esiste in
+**HOL Light** (Harrison); in Lean erano disponibili solo gusci numerologici,
+e il problema `Platonic classification` sulla
+[leaderboard ufficiale lean-eval](https://leanprover.github.io/lean-eval-leaderboard/)
+risulta irrisolto da tutti i 41 modelli elencati al momento della scrittura.
+A nostra conoscenza questo è il primo teorema geometrico di classificazione
+platonica certificato in Lean 4.
+
+Moduli: [`UnicoProofs/Platonici/`](UnicoProofs/Platonici/) — teoremi apicali in
+[`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean) e
+[`TetraedroStadio2.lean`](UnicoProofs/Platonici/TetraedroStadio2.lean).
+
 ## In evidenza — Il teorema di Sylvester–Gallai
 
 *Dimostrato il 14 luglio 2026 dalla pipeline di certificazione autonoma
@@ -185,6 +236,7 @@ valutazione affidata al compilatore. Tag
 
 | File | Enunciato | Fiducia | Verifica | Autore della dimostrazione |
 |------|-----------|:-------:|:------:|----------------------------|
+| [`Platonici/`](UnicoProofs/Platonici/) | **La classificazione dei solidi platonici** (Wiedijk #50, tipi di Schläfli locali) — politopo convesso 3D con faccette p-gonali regolari per orbita e vertici q-ciclici ⟹ q(p−2) < 2p e (p,q) è una delle cinque coppie platoniche (`cyclicallyRegular_schlafli`); testimone tetraedro certificato (`tetraedro_cyclicallyRegular`); 25 moduli | ✅ kernel puro | — | UNICO / NOUS (Claude, Anthropic) |
 | [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **Teorema di Sylvester–Gallai** — un insieme finito di punti non tutti allineati ammette sempre una retta che ne contiene esattamente due; dimostrazione di Kelly resa puramente vettoriale, senza ipotesi di dimensione (si veda la nota di prior art: Sylvester–Chvátal esiste in Lean 4, l'enunciato euclideo classico no) | ✅ kernel puro | [comparator](comparator/sylvester_gallai/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Teorema di Feuerbach** (Wiedijk #29) — circonferenza dei nove punti tangente internamente all'inscritto (`feuerbach_insphere`) ed esternamente ai tre exinscritti (`feuerbach_exsphere`); dimostrazione indipendente, 11 moduli | ✅ kernel puro | [comparator](comparator/feuerbach/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Morley.lean`](UnicoProofs/Morley.lean) | **Teorema delle trisettrici di Morley** (Wiedijk n. 84) — enunciato geometrico, con i compagni `∃!` e di non-degenerazione; formalizzazione indipendente (si veda la nota di prior art: risolto in precedenza sul [benchmark lean-eval](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ kernel puro | [comparator](lean-eval/morley_theorem/) | UNICO / NOUS (Claude, Anthropic) |
