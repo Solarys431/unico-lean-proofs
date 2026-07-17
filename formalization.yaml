@@ -78,8 +78,11 @@ status:
     (Wiedijk #29), in the classical two-part form, stated in an abstract
     2-dimensional Euclidean plane; and a geometric formalization of Morley's
     trisector theorem in the complex plane (public statement with trisectors
-    as rays, plus existence/uniqueness and non-degeneracy companions). Also
-    contains two Erdős-problem items.
+    as rays, plus existence/uniqueness and non-degeneracy companions); and the
+    local Schläfli-type classification of the Platonic solids in an abstract
+    3-dimensional real inner-product space (necessity of the five (p,q) pairs,
+    facet regularity defined by isometry orbit, with a certified tetrahedron
+    witness). Also contains two Erdős-problem items.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Classical.choice", "Quot.sound", "Lean.ofReduceBool (Erdos1148Counterexample only, via native_decide)"]
@@ -109,6 +112,14 @@ status:
       axioms: ["propext", "Classical.choice", "Quot.sound"]
     - declaration: "morley_non_degenere_classico"
       file: "UnicoProofs/Morley.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "cyclicallyRegular_schlafli"
+      file: "UnicoProofs/Platonici/Classificazione.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "tetraedro_cyclicallyRegular"
+      file: "UnicoProofs/Platonici/TetraedroStadio2.lean"
       sorry_count: 0
       axioms: ["propext", "Classical.choice", "Quot.sound"]
     - declaration: "erdos_1064_k2"
@@ -248,6 +259,14 @@ alignment:
     - source: "The Morley triangle is non-degenerate (three pairwise distinct points)"
       lean: "morley_non_degenere_classico"
       module: "UnicoProofs/Morley.lean"
+      status: "proved"
+    - source: "Platonic classification (local Schläfli types): a 3-dimensional convex polytope with orbit-regular p-gonal facets and q-cyclic vertices satisfies q(p-2) < 2p, so (p,q) is one of the five Platonic pairs"
+      lean: "cyclicallyRegular_schlafli"
+      module: "UnicoProofs/Platonici/Classificazione.lean"
+      status: "proved"
+    - source: "Non-vacuity of the Platonic classification: the regular tetrahedron satisfies the predicate for (3,3)"
+      lean: "tetraedro_cyclicallyRegular"
+      module: "UnicoProofs/Platonici/TetraedroStadio2.lean"
       status: "proved"
 
 acknowledgements: >-
