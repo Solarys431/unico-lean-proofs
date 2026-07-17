@@ -36,9 +36,7 @@ build: **[PIPELINE.md](PIPELINE.md)** (in inglese).
 ## In evidenza — La classificazione dei solidi platonici (Wiedijk #50)
 
 *Il teorema che chiude gli Elementi di Euclide (XIII.18 e scolio), dimostrato
-il 17 luglio 2026 dalla pipeline di certificazione autonoma UNICO / NOUS — la
-campagna intera, dal foglio bianco al certificato del kernel, in un solo
-giorno.*
+il 17 luglio 2026 dalla pipeline di certificazione autonoma UNICO / NOUS.*
 
 > Un politopo convesso tridimensionale con faccette p-gonali regolari e tutti
 > i vertici q-ciclici soddisfa q(p−2) < 2p; dunque (p, q) è uno dei cinque
@@ -77,8 +75,8 @@ Anteriorità, verificata lo stesso giorno: il teorema geometrico esiste in
 e il problema `Platonic classification` sulla
 [leaderboard ufficiale lean-eval](https://leanprover.github.io/lean-eval-leaderboard/)
 risulta irrisolto da tutti i 41 modelli elencati al momento della scrittura.
-A nostra conoscenza questo è il primo teorema geometrico di classificazione
-platonica certificato in Lean 4.
+Se conosci lavori geometrici precedenti su questo teorema in Lean, apri pure
+una issue e li citeremo con evidenza.
 
 Moduli: [`UnicoProofs/Platonici/`](UnicoProofs/Platonici/) — teoremi apicali in
 [`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean) e

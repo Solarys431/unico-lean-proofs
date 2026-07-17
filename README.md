@@ -34,8 +34,7 @@ verify our claims without trusting our build: see **[PIPELINE.md](PIPELINE.md)**
 ## Highlight — The Platonic Solids Classification (Wiedijk #50)
 
 *The theorem that closes Euclid's Elements (XIII.18 and scholium), proved
-July 17, 2026 by the UNICO / NOUS autonomous certification pipeline — the
-full campaign, from blank page to kernel certificate, in a single day.*
+July 17, 2026 by the UNICO / NOUS autonomous certification pipeline.*
 
 > A three-dimensional convex polytope whose facets are regular p-gons and
 > whose vertices are all q-cyclic satisfies q(p−2) < 2p; hence (p, q) is one
@@ -71,9 +70,9 @@ Prior art, checked the same day: the geometric theorem exists in **HOL Light**
 (Harrison); in Lean only numerological shells were available, and the
 `Platonic classification` problem on the official
 [lean-eval leaderboard](https://leanprover.github.io/lean-eval-leaderboard/)
-is unsolved by all 41 listed models at the time of writing. To our knowledge
-this is the first geometric Platonic classification theorem certified in
-Lean 4.
+is unsolved by all 41 listed models at the time of writing. If you know of
+earlier geometric work on this theorem in Lean, please open an issue and we
+will cite it prominently.
 
 Modules: [`UnicoProofs/Platonici/`](UnicoProofs/Platonici/) — apex theorems in
 [`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean) and
