@@ -18,6 +18,10 @@ stated per file — **pure kernel** (nothing beyond the mathlib axioms) versus
 and the Lean compiler) — because honesty about the trusted base matters more
 than a longer list of green check marks.
 
+**How the pipeline works** — architecture, the *taste canon* (a second judge
+ruling on mathematical quality, not just truth), adversarial gates, and how to
+verify our claims without trusting our build: see **[PIPELINE.md](PIPELINE.md)**.
+
 ---
 
 ## Highlight — The Sylvester–Gallai Theorem

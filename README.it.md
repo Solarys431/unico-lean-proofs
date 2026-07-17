@@ -19,6 +19,11 @@ di mathlib) oppure **compilatore** (`native_decide`, che aggiunge la fiducia
 in `Lean.ofReduceBool` e nel compilatore) — perché l'onestà sulla base fidata
 conta più di una lista più lunga di spunte verdi.
 
+**Come lavora la pipeline** — l'architettura, il *canone del gusto* (un secondo
+giudice che valuta la qualità matematica, non solo la verità), i gate
+avversariali, e come verificare le nostre affermazioni senza fidarsi del nostro
+build: **[PIPELINE.md](PIPELINE.md)** (in inglese).
+
 ---
 
 ## In evidenza — Il teorema di Sylvester–Gallai

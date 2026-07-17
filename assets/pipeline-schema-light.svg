@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1890" viewBox="0 0 1200 1890">
+<rect width="1200" height="1890" fill="#FAFAF7"/>
+<text x="600" y="52" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#1C2128" font-weight="600" text-anchor="middle">UNICO / NOUS — a two-judge pipeline</text>
+<text x="600" y="80" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#4A5260" font-weight="normal" text-anchor="middle">the kernel rules on TRUTH · the taste canon rules on QUALITY</text>
+<rect x="140" y="106" width="400" height="92" rx="10" fill="#EAF1F8" stroke="#B9CFE3" stroke-width="1"/>
+<text x="156" y="132" font-family="Georgia, 'Times New Roman', serif" font-size="15.5" fill="#2B5B8C" font-weight="600" text-anchor="start">First judge — the Lean 4 kernel</text>
+<text x="156" y="154" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#2B5B8C" font-weight="normal" text-anchor="start" font-style="italic">“Is it proved?”</text>
+<text x="156" y="176" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Axioms measured per theorem. Fail-closed.</text>
+<rect x="660" y="106" width="400" height="92" rx="10" fill="#F7F0E4" stroke="#E2CBA4" stroke-width="1"/>
+<text x="676" y="132" font-family="Georgia, 'Times New Roman', serif" font-size="15.5" fill="#96662A" font-weight="600" text-anchor="start">Second judge — the taste canon</text>
+<text x="676" y="154" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#96662A" font-weight="normal" text-anchor="start" font-style="italic">“Is it good mathematics?”</text>
+<text x="676" y="176" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Decides what starts and what gets published.</text>
+<rect x="310" y="232" width="12" height="12" rx="3" fill="#F7F0E4" stroke="#96662A" stroke-width="1.5"/>
+<text x="330" y="243" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">taste canon (quality)</text>
+<rect x="510" y="232" width="12" height="12" rx="3" fill="#EAF1F8" stroke="#2B5B8C" stroke-width="1.5"/>
+<text x="530" y="243" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">kernel &amp; tools (truth)</text>
+<rect x="710" y="232" width="12" height="12" rx="3" fill="#F6E9E9" stroke="#8C2F2F" stroke-width="1.5"/>
+<text x="730" y="243" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">hard gate: no way around</text>
+<line x1="600" y1="310" x2="600" y2="1680" stroke="#C4C4B8" stroke-width="2"/>
+<path d="M 595 456 L 600 464 L 605 456 Z" fill="#C4C4B8"/>
+<circle cx="600" cy="330" r="24" fill="#FAFAF7" stroke="#C4C4B8" stroke-width="2.5"/>
+<text x="600" y="334" font-family="Menlo, Consolas, monospace" font-size="12" fill="#4A5260" font-weight="bold" text-anchor="middle">F0</text>
+<rect x="430" y="360" width="340" height="42" fill="#FAFAF7"/>
+<text x="600" y="376" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1C2128" font-weight="600" text-anchor="middle">Target selection</text>
+<text x="600" y="394" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#8A93A1" font-weight="normal" text-anchor="middle">quick prior-art screen before falling in love</text>
+<rect x="30" y="314" width="400" height="66" rx="8" fill="#F7F0E4" stroke="#E2CBA4" stroke-width="1"/>
+<text x="44" y="334" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#96662A" font-weight="bold" text-anchor="start" letter-spacing="1.5">TASTE CANON</text>
+<text x="44" y="352" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">A fast in-language search kills doomed</text>
+<text x="44" y="368" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">targets early.</text>
+<line x1="430" y1="347.0" x2="574" y2="347.0" stroke="#E2CBA4" stroke-width="1.5" stroke-dasharray="4 4"/>
+<path d="M 595 606 L 600 614 L 605 606 Z" fill="#C4C4B8"/>
+<circle cx="600" cy="480" r="24" fill="#FAFAF7" stroke="#C4C4B8" stroke-width="2.5"/>
+<text x="600" y="484" font-family="Menlo, Consolas, monospace" font-size="12" fill="#4A5260" font-weight="bold" text-anchor="middle">F1</text>
+<rect x="430" y="510" width="340" height="42" fill="#FAFAF7"/>
+<text x="600" y="526" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1C2128" font-weight="600" text-anchor="middle">Study</text>
+<text x="600" y="544" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#8A93A1" font-weight="normal" text-anchor="middle">no campaign starts without a dossier</text>
+<rect x="30" y="464" width="400" height="82" rx="8" fill="#F7F0E4" stroke="#E2CBA4" stroke-width="1"/>
+<text x="44" y="484" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#96662A" font-weight="bold" text-anchor="start" letter-spacing="1.5">TASTE CANON · STUDY</text>
+<text x="44" y="502" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Known proofs and their mechanisms;</text>
+<text x="44" y="518" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">formalizations in every prover;</text>
+<text x="44" y="534" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">mathlib API inventory; originality rung.</text>
+<line x1="430" y1="505.0" x2="574" y2="505.0" stroke="#E2CBA4" stroke-width="1.5" stroke-dasharray="4 4"/>
+<path d="M 595 756 L 600 764 L 605 756 Z" fill="#C4C4B8"/>
+<circle cx="600" cy="630" r="24" fill="#FAFAF7" stroke="#C4C4B8" stroke-width="2.5"/>
+<text x="600" y="634" font-family="Menlo, Consolas, monospace" font-size="12" fill="#4A5260" font-weight="bold" text-anchor="middle">F2</text>
+<rect x="430" y="660" width="340" height="42" fill="#FAFAF7"/>
+<text x="600" y="676" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1C2128" font-weight="600" text-anchor="middle">Statement</text>
+<text x="600" y="694" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#8A93A1" font-weight="normal" text-anchor="middle">strongest natural form, before any proof</text>
+<rect x="30" y="614" width="400" height="82" rx="8" fill="#F7F0E4" stroke="#E2CBA4" stroke-width="1"/>
+<text x="44" y="634" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#96662A" font-weight="bold" text-anchor="start" letter-spacing="1.5">TASTE CANON · C1</text>
+<text x="44" y="652" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Six generalization axes, blind-reviewed.</text>
+<text x="44" y="668" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Mechanical: concrete-model test,</text>
+<text x="44" y="684" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">oriented-angle test for fixed dimension.</text>
+<line x1="430" y1="655.0" x2="574" y2="655.0" stroke="#E2CBA4" stroke-width="1.5" stroke-dasharray="4 4"/>
+<rect x="770" y="614" width="400" height="66" rx="8" fill="#EAF1F8" stroke="#B9CFE3" stroke-width="1"/>
+<text x="784" y="634" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#2B5B8C" font-weight="bold" text-anchor="start" letter-spacing="1.5">TOOL</text>
+<text x="784" y="652" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Signature lint: restrictions in the</text>
+<text x="784" y="668" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">statement, not in the proof body.</text>
+<line x1="626" y1="647.0" x2="770" y2="647.0" stroke="#B9CFE3" stroke-width="1.5" stroke-dasharray="4 4"/>
+<path d="M 595 906 L 600 914 L 605 906 Z" fill="#C4C4B8"/>
+<circle cx="600" cy="780" r="24" fill="#FAFAF7" stroke="#C4C4B8" stroke-width="2.5"/>
+<text x="600" y="784" font-family="Menlo, Consolas, monospace" font-size="12" fill="#4A5260" font-weight="bold" text-anchor="middle">F3</text>
+<rect x="430" y="810" width="340" height="42" fill="#FAFAF7"/>
+<text x="600" y="826" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1C2128" font-weight="600" text-anchor="middle">Route design</text>
+<text x="600" y="844" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#8A93A1" font-weight="normal" text-anchor="middle">two strategies sketched, one coordinate-free</text>
+<rect x="30" y="764" width="400" height="82" rx="8" fill="#F7F0E4" stroke="#E2CBA4" stroke-width="1"/>
+<text x="44" y="784" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#96662A" font-weight="bold" text-anchor="start" letter-spacing="1.5">TASTE CANON · C2 + C6</text>
+<text x="44" y="802" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">A coordinate route must justify itself.</text>
+<text x="44" y="818" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Adversarial review attacks the plan:</text>
+<text x="44" y="834" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">“propose a stronger statement.”</text>
+<line x1="430" y1="805.0" x2="574" y2="805.0" stroke="#E2CBA4" stroke-width="1.5" stroke-dasharray="4 4"/>
+<path d="M 595 1056 L 600 1064 L 605 1056 Z" fill="#C4C4B8"/>
+<circle cx="600" cy="930" r="24" fill="#FAFAF7" stroke="#C4C4B8" stroke-width="2.5"/>
+<text x="600" y="934" font-family="Menlo, Consolas, monospace" font-size="12" fill="#4A5260" font-weight="bold" text-anchor="middle">F4</text>
+<rect x="430" y="960" width="340" height="42" fill="#FAFAF7"/>
+<text x="600" y="976" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1C2128" font-weight="600" text-anchor="middle">Formalization</text>
+<text x="600" y="994" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#8A93A1" font-weight="normal" text-anchor="middle">tactic gauntlet, then independent AI provers</text>
+<rect x="30" y="914" width="400" height="82" rx="8" fill="#F7F0E4" stroke="#E2CBA4" stroke-width="1"/>
+<text x="44" y="934" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#96662A" font-weight="bold" text-anchor="start" letter-spacing="1.5">TASTE CANON · C3</text>
+<text x="44" y="952" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Reuse before rederiving. Every lemma</text>
+<text x="44" y="968" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">classified at birth: classical /</text>
+<text x="44" y="984" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">deferred / ad-hoc (private namespace).</text>
+<line x1="430" y1="955.0" x2="574" y2="955.0" stroke="#E2CBA4" stroke-width="1.5" stroke-dasharray="4 4"/>
+<rect x="770" y="914" width="400" height="66" rx="8" fill="#EAF1F8" stroke="#B9CFE3" stroke-width="1"/>
+<text x="784" y="934" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#2B5B8C" font-weight="bold" text-anchor="start" letter-spacing="1.5">TOOL</text>
+<text x="784" y="952" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Every candidate proof goes back</text>
+<text x="784" y="968" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">to the kernel. No exceptions.</text>
+<line x1="626" y1="947.0" x2="770" y2="947.0" stroke="#B9CFE3" stroke-width="1.5" stroke-dasharray="4 4"/>
+<path d="M 595 1206 L 600 1214 L 605 1206 Z" fill="#C4C4B8"/>
+<circle cx="600" cy="1080" r="24" fill="#F6E9E9" stroke="#8C2F2F" stroke-width="2.5"/>
+<text x="600" y="1084" font-family="Menlo, Consolas, monospace" font-size="12" fill="#8C2F2F" font-weight="bold" text-anchor="middle">F5</text>
+<rect x="430" y="1110" width="340" height="42" fill="#FAFAF7"/>
+<text x="600" y="1126" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1C2128" font-weight="600" text-anchor="middle">Certification</text>
+<text x="600" y="1144" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#8A93A1" font-weight="normal" text-anchor="middle">only CERTIFIED passes</text>
+<rect x="480.0" y="1154" width="240" height="22" rx="6" fill="#F6E9E9" stroke="#DDB3B3" stroke-width="1.5"/>
+<text x="600" y="1169" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#8C2F2F" font-weight="bold" text-anchor="middle" letter-spacing="1.5">HARD GATE · THE KERNEL</text>
+<rect x="770" y="1064" width="400" height="98" rx="8" fill="#F6E9E9" stroke="#DDB3B3" stroke-width="1"/>
+<text x="784" y="1084" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#8C2F2F" font-weight="bold" text-anchor="start" letter-spacing="1.5">FIRST JUDGE</text>
+<text x="784" y="1102" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Axioms measured per theorem</text>
+<text x="784" y="1118" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">(#print axioms), never inferred.</text>
+<text x="784" y="1134" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Fail-closed parser: a possibly missed</text>
+<text x="784" y="1150" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">declaration is never “certified”.</text>
+<line x1="626" y1="1113.0" x2="770" y2="1113.0" stroke="#DDB3B3" stroke-width="1.5" stroke-dasharray="4 4"/>
+<path d="M 595 1356 L 600 1364 L 605 1356 Z" fill="#C4C4B8"/>
+<circle cx="600" cy="1230" r="24" fill="#FAFAF7" stroke="#C4C4B8" stroke-width="2.5"/>
+<text x="600" y="1234" font-family="Menlo, Consolas, monospace" font-size="12" fill="#4A5260" font-weight="bold" text-anchor="middle">F6</text>
+<rect x="430" y="1260" width="340" height="42" fill="#FAFAF7"/>
+<text x="600" y="1276" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1C2128" font-weight="600" text-anchor="middle">Post audit</text>
+<text x="600" y="1294" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#8A93A1" font-weight="normal" text-anchor="middle">taste report + non-vacuity witness</text>
+<rect x="30" y="1214" width="400" height="82" rx="8" fill="#F7F0E4" stroke="#E2CBA4" stroke-width="1"/>
+<text x="44" y="1234" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#96662A" font-weight="bold" text-anchor="start" letter-spacing="1.5">TASTE CANON · C4</text>
+<text x="44" y="1252" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Hypothesis minimality, measured:</text>
+<text x="44" y="1268" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">an assumption the statement doesn't</text>
+<text x="44" y="1284" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">need is a declared debt of the proof.</text>
+<line x1="430" y1="1255.0" x2="574" y2="1255.0" stroke="#E2CBA4" stroke-width="1.5" stroke-dasharray="4 4"/>
+<rect x="770" y="1214" width="400" height="66" rx="8" fill="#EAF1F8" stroke="#B9CFE3" stroke-width="1"/>
+<text x="784" y="1234" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#2B5B8C" font-weight="bold" text-anchor="start" letter-spacing="1.5">TOOL</text>
+<text x="784" y="1252" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Remove each instance assumption,</text>
+<text x="784" y="1268" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">re-elaborate. Timeout ≠ verdict.</text>
+<line x1="626" y1="1247.0" x2="770" y2="1247.0" stroke="#B9CFE3" stroke-width="1.5" stroke-dasharray="4 4"/>
+<path d="M 595 1506 L 600 1514 L 605 1506 Z" fill="#C4C4B8"/>
+<circle cx="600" cy="1380" r="24" fill="#F6E9E9" stroke="#8C2F2F" stroke-width="2.5"/>
+<text x="600" y="1384" font-family="Menlo, Consolas, monospace" font-size="12" fill="#8C2F2F" font-weight="bold" text-anchor="middle">F7</text>
+<rect x="430" y="1410" width="340" height="42" fill="#FAFAF7"/>
+<text x="600" y="1426" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1C2128" font-weight="600" text-anchor="middle">Packaging</text>
+<text x="600" y="1444" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#8A93A1" font-weight="normal" text-anchor="middle">verify without trusting our build</text>
+<rect x="480.0" y="1454" width="240" height="22" rx="6" fill="#F6E9E9" stroke="#DDB3B3" stroke-width="1.5"/>
+<text x="600" y="1469" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#8C2F2F" font-weight="bold" text-anchor="middle" letter-spacing="1.5">HARD GATE · COMPARATOR + CI</text>
+<rect x="770" y="1364" width="400" height="82" rx="8" fill="#F6E9E9" stroke="#DDB3B3" stroke-width="1"/>
+<text x="784" y="1384" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#8C2F2F" font-weight="bold" text-anchor="start" letter-spacing="1.5">READER'S TRUST</text>
+<text x="784" y="1402" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">A short Challenge.lean states the claim;</text>
+<text x="784" y="1418" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">the comparator checks the proof matches</text>
+<text x="784" y="1434" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">it exactly, in a real Landlock sandbox.</text>
+<line x1="626" y1="1405.0" x2="770" y2="1405.0" stroke="#DDB3B3" stroke-width="1.5" stroke-dasharray="4 4"/>
+<path d="M 595 1656 L 600 1664 L 605 1656 Z" fill="#C4C4B8"/>
+<circle cx="600" cy="1530" r="24" fill="#FAFAF7" stroke="#C4C4B8" stroke-width="2.5"/>
+<text x="600" y="1534" font-family="Menlo, Consolas, monospace" font-size="12" fill="#4A5260" font-weight="bold" text-anchor="middle">F8</text>
+<rect x="430" y="1560" width="340" height="42" fill="#FAFAF7"/>
+<text x="600" y="1576" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1C2128" font-weight="600" text-anchor="middle">Publication</text>
+<text x="600" y="1594" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#8A93A1" font-weight="normal" text-anchor="middle">a human decides; the pipeline prepares</text>
+<rect x="30" y="1514" width="400" height="98" rx="8" fill="#F7F0E4" stroke="#E2CBA4" stroke-width="1"/>
+<text x="44" y="1534" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#96662A" font-weight="bold" text-anchor="start" letter-spacing="1.5">TASTE CANON · C5 + C6</text>
+<text x="44" y="1552" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Second prior-art pass (canary query,</text>
+<text x="44" y="1568" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">snapshot diff). Debts declared in the</text>
+<text x="44" y="1584" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">text. Claims never exceed the graded</text>
+<text x="44" y="1600" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">rung, always relative to sources.</text>
+<line x1="430" y1="1563.0" x2="574" y2="1563.0" stroke="#E2CBA4" stroke-width="1.5" stroke-dasharray="4 4"/>
+<circle cx="600" cy="1680" r="24" fill="#FAFAF7" stroke="#C4C4B8" stroke-width="2.5"/>
+<text x="600" y="1684" font-family="Menlo, Consolas, monospace" font-size="12" fill="#4A5260" font-weight="bold" text-anchor="middle">F9</text>
+<rect x="430" y="1710" width="340" height="42" fill="#FAFAF7"/>
+<text x="600" y="1726" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1C2128" font-weight="600" text-anchor="middle">Post-mortem</text>
+<text x="600" y="1744" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#8A93A1" font-weight="normal" text-anchor="middle">the cycle learns</text>
+<rect x="30" y="1664" width="400" height="82" rx="8" fill="#F7F0E4" stroke="#E2CBA4" stroke-width="1"/>
+<text x="44" y="1684" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#96662A" font-weight="bold" text-anchor="start" letter-spacing="1.5">FEEDBACK</text>
+<text x="44" y="1702" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">Parallel proofs compared; every missed</text>
+<text x="44" y="1718" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">prior art extends the search list; every</text>
+<text x="44" y="1734" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#4A5260" font-weight="normal" text-anchor="start">flaw becomes a regression test.</text>
+<line x1="430" y1="1705.0" x2="574" y2="1705.0" stroke="#E2CBA4" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="600" y="1862" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#8A93A1" font-weight="normal" text-anchor="middle">spec v1.1 · hardened by two adversarial gates · adversarial findings become regression tests</text>
+</svg>
