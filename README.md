@@ -22,6 +22,13 @@ than a longer list of green check marks.
 ruling on mathematical quality, not just truth), adversarial gates, and how to
 verify our claims without trusting our build: see **[PIPELINE.md](PIPELINE.md)**.
 
+<a href="PIPELINE.md">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-schema-dark.svg">
+  <img alt="The UNICO/NOUS two-judge pipeline — click for the full architecture" src="assets/pipeline-schema-light.svg" width="100%">
+</picture>
+</a>
+
 ---
 
 ## Highlight — The Sylvester–Gallai Theorem

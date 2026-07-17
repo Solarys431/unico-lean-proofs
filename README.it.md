@@ -24,6 +24,13 @@ giudice che valuta la qualità matematica, non solo la verità), i gate
 avversariali, e come verificare le nostre affermazioni senza fidarsi del nostro
 build: **[PIPELINE.md](PIPELINE.md)** (in inglese).
 
+<a href="PIPELINE.md">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-schema-dark.svg">
+  <img alt="The UNICO/NOUS two-judge pipeline — click for the full architecture" src="assets/pipeline-schema-light.svg" width="100%">
+</picture>
+</a>
+
 ---
 
 ## In evidenza — Il teorema di Sylvester–Gallai
