@@ -71,12 +71,17 @@ inversi modulari) — 25 moduli, 158 teoremi kernel-puri, assiomi soltanto
 `propext`, `Classical.choice`, `Quot.sound`.
 
 Anteriorità, verificata lo stesso giorno: il teorema geometrico esiste in
-**HOL Light** (Harrison); in Lean erano disponibili solo gusci numerologici,
-e il problema `Platonic classification` sulla
-[leaderboard ufficiale lean-eval](https://leanprover.github.io/lean-eval-leaderboard/)
-risulta irrisolto da tutti i 41 modelli elencati al momento della scrittura.
-Se conosci lavori geometrici precedenti su questo teorema in Lean, apri pure
-una issue e li citeremo con evidenza.
+**HOL Light** (Harrison); in Lean abbiamo trovato solo versioni numerologiche
+(coppie di Schläfli come naturali, con la disuguaglianza postulata). Un
+problema affine ma **più forte**, il `platonicCount` dimensione per dimensione
+(`p_3 = 5`, `p_4 = 6`, `p_d = 3` per `d ≥ 5`, con flag-transitività e
+similitudine), è posto sulla
+[leaderboard lean-eval](https://leanprover.github.io/lean-eval-leaderboard/);
+il nostro risultato **non** lo rivendica (è la nostra fase successiva
+dichiarata), e quella leaderboard è a sottomissione, quindi il suo stato
+riflette le soluzioni inviate, non una valutazione di ogni modello. Se conosci
+lavori geometrici precedenti su questo teorema in Lean, apri pure una issue e
+li citeremo con evidenza.
 
 Moduli: [`UnicoProofs/Platonici/`](UnicoProofs/Platonici/) — teoremi apicali in
 [`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean) e

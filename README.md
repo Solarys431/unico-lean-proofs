@@ -67,12 +67,15 @@ star-polygon orbits via modular inverses) — 25 modules, 158 kernel-pure
 theorems, axioms `propext`, `Classical.choice`, `Quot.sound` only.
 
 Prior art, checked the same day: the geometric theorem exists in **HOL Light**
-(Harrison); in Lean only numerological shells were available, and the
-`Platonic classification` problem on the official
-[lean-eval leaderboard](https://leanprover.github.io/lean-eval-leaderboard/)
-is unsolved by all 41 listed models at the time of writing. If you know of
-earlier geometric work on this theorem in Lean, please open an issue and we
-will cite it prominently.
+(Harrison); in Lean we found only numerological versions (Schläfli pairs as
+bare naturals with the inequality postulated). A related but **stronger**
+problem, the dimension-by-dimension `platonicCount` (`p_3 = 5`, `p_4 = 6`,
+`p_d = 3` for `d ≥ 5`, with flag transitivity and similarity), is posed on the
+[lean-eval leaderboard](https://leanprover.github.io/lean-eval-leaderboard/);
+our result does **not** claim it (that is our declared later phase), and the
+leaderboard is submission-based, so its status reflects submitted solutions,
+not an evaluation of every model. If you know of earlier geometric work on
+this theorem in Lean, please open an issue and we will cite it prominently.
 
 Modules: [`UnicoProofs/Platonici/`](UnicoProofs/Platonici/) — apex theorems in
 [`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean) and
