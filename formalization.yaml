@@ -20,9 +20,10 @@ sources:
       Independent formalization (2026-07-17). The geometric theorem exists in
       HOL Light (Harrison). In Lean, only numerological versions were available
       (Schläfli pairs as bare naturals with the inequality postulated, e.g. in
-      rjwalters/lean-genius); the "Platonic classification" problem on the
-      official lean-eval leaderboard is unsolved by all 41 listed models as of
-      2026-07-17. Our statement lives on an abstract real inner-product space:
+      rjwalters/lean-genius). A related but stronger problem on the lean-eval
+      leaderboard (dimension-by-dimension platonicCount, with flag transitivity
+      and similarity) is a different, larger target that this work does not
+      claim. Our statement lives on an abstract real inner-product space:
       facet regularity defined by isometry orbit (no postulated angles), vertex
       fans as pure incidence structure, the angular inequality derived, plus a
       certified tetrahedron witness. Scope: necessity of the five pairs and one
