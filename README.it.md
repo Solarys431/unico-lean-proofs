@@ -96,9 +96,21 @@ regolari e fan ciclici si trasportano lungo le isometrie che preservano il
 politopo, quindi per ogni solido bastano una faccetta e un fan costruiti a
 mano; il resto lo fa la simmetria.
 
+**Aggiornamento (18 luglio 2026, seconda release): il lower bound 3D sulle
+definizioni del benchmark lean-eval.** Il benchmark enuncia la classificazione
+platonica su definizioni proprie (bandiere, `IsRegular` come flag-transitività,
+`platonicCount` come classi di similitudine). Le riproduciamo parola per parola
+([`Benchmark.lean`](UnicoProofs/Platonici/Benchmark.lean)) e certifichiamo, su
+quel contratto esatto, `cinque_le_platonicCount3 : 5 ≤ platonicCount 3`, con la
+flag-transitività dei cinque solidi, l'invariante di similitudine (cardinalità
+dei vertici) e il conteggio delle classi. È il **solo lower bound**: non risolve
+il problema del benchmark, che chiede l'uguaglianza e i conteggi in ogni
+dimensione; l'upper bound è la prossima fase del progetto.
+
 Moduli: [`UnicoProofs/Platonici/`](UnicoProofs/Platonici/) — teoremi apicali in
 [`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean),
-[`Realizzabilita.lean`](UnicoProofs/Platonici/Realizzabilita.lean), i cinque
+[`Realizzabilita.lean`](UnicoProofs/Platonici/Realizzabilita.lean),
+[`RegolariBenchmark.lean`](UnicoProofs/Platonici/RegolariBenchmark.lean), i cinque
 moduli testimone, e
 [`TetraedroStadio2.lean`](UnicoProofs/Platonici/TetraedroStadio2.lean).
 

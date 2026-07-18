@@ -11,3 +11,8 @@ import UnicoProofs.Platonici.OttaedroTestimone
 import UnicoProofs.Platonici.DodecaedroTestimone
 import UnicoProofs.Platonici.IcosaedroTestimone
 import UnicoProofs.Platonici.Realizzabilita
+import UnicoProofs.Platonici.Benchmark
+import UnicoProofs.Platonici.InvarianteSimilarita
+import UnicoProofs.Platonici.IstanzeBenchmark
+import UnicoProofs.Platonici.ConteggioBenchmark
+import UnicoProofs.Platonici.RegolariBenchmark

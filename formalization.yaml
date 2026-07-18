@@ -142,6 +142,11 @@ status:
       file: "UnicoProofs/Platonici/Realizzabilita.lean"
       sorry_count: 0
       axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "cinque_le_platonicCount3"
+      file: "UnicoProofs/Platonici/RegolariBenchmark.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: "lower bound on the lean-eval benchmark's own definitions; the equality (upper bound) is future work"
     - declaration: "erdos_1064_k2"
       file: "UnicoProofs/Erdos1064K2.lean"
       sorry_count: 0

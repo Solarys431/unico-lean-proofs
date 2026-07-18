@@ -98,10 +98,30 @@ regular facets and cyclic vertex fans transport along polytope-preserving
 isometries, so each solid needs one facet and one vertex fan built by hand —
 symmetry does the rest.
 
+**Update (July 18, 2026, second release) — the 3D lower bound on the lean-eval
+benchmark's own definitions.** The [lean-eval benchmark](https://github.com/leanprover/lean-eval)
+states the Platonic classification problem on its own clean definitions
+(`ConvexPolytope`, flags, `IsRegular` as flag-transitivity, `platonicCount` as
+similarity classes). We reproduce those definitions verbatim
+([`Benchmark.lean`](UnicoProofs/Platonici/Benchmark.lean)) and certify, on that
+exact contract:
+
+```lean
+theorem cinque_le_platonicCount3 : 5 ≤ platonicCount 3
+```
+
+via flag-transitivity of all five solids, a similarity invariant (vertex
+cardinality, since similarities biject extreme points), and an `encard` class
+count. This is the **lower bound only**: it does not solve the benchmark
+problem, which asks for equality and for the counts in every dimension. The
+upper bound (every regular 3-polytope is similar to one of the five) is the
+next phase of this project.
+
 Modules: [`UnicoProofs/Platonici/`](UnicoProofs/Platonici/) — apex theorems in
 [`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean),
-[`Realizzabilita.lean`](UnicoProofs/Platonici/Realizzabilita.lean), and the five
-witness modules (`TetraedroStadio2`, `CuboTestimone`, `OttaedroTestimone`,
+[`Realizzabilita.lean`](UnicoProofs/Platonici/Realizzabilita.lean),
+[`RegolariBenchmark.lean`](UnicoProofs/Platonici/RegolariBenchmark.lean), and the
+five witness modules (`TetraedroStadio2`, `CuboTestimone`, `OttaedroTestimone`,
 `DodecaedroTestimone`, `IcosaedroTestimone`).
 
 ## Highlight — The Sylvester–Gallai Theorem
@@ -248,7 +268,7 @@ evaluation. Tagged [`morley-2026-07-12`](https://github.com/Solarys431/unico-lea
 
 | File | Statement | Trust | Verify | Proof author |
 |------|-----------|:-----:|:------:|--------------|
-| [`Platonici/`](UnicoProofs/Platonici/) | **The Platonic solids classification** (Wiedijk #50, local Schläfli types) — 3D convex polytope with orbit-regular p-gonal facets and q-cyclic vertices ⟹ q(p−2) < 2p and (p,q) is one of the five Platonic pairs (`cyclicallyRegular_schlafli`); certified witnesses for **all five solids** and the characterization `realizzabile_iff` ((p,q) realizable ⟺ one of the five Platonic pairs); 31 modules | ✅ pure kernel | [comparator](comparator/platonici/) | UNICO / NOUS (Claude, Anthropic) |
+| [`Platonici/`](UnicoProofs/Platonici/) | **The Platonic solids classification** (Wiedijk #50, local Schläfli types) — 3D convex polytope with orbit-regular p-gonal facets and q-cyclic vertices ⟹ q(p−2) < 2p and (p,q) is one of the five Platonic pairs (`cyclicallyRegular_schlafli`); certified witnesses for **all five solids**, the characterization `realizzabile_iff`, and the lean-eval-contract lower bound `cinque_le_platonicCount3 : 5 ≤ platonicCount 3` (flag-transitivity of all five, similarity invariant, class count); 36 modules | ✅ pure kernel | [comparator](comparator/platonici/) | UNICO / NOUS (Claude, Anthropic) |
 | [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **The Sylvester–Gallai theorem** — a finite non-collinear point set always admits a line through exactly two of its points; Kelly's proof made purely vectorial, no dimension hypothesis (see prior-art note: Sylvester–Chvátal exists in Lean 4, the classical Euclidean statement did not) | ✅ pure kernel | [comparator](comparator/sylvester_gallai/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Feuerbach's theorem** (Wiedijk #29) — nine-point circle internally tangent to the incircle (`feuerbach_insphere`) and externally tangent to the three excircles (`feuerbach_exsphere`); independent proof, 11 modules | ✅ pure kernel | [comparator](comparator/feuerbach/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Morley.lean`](UnicoProofs/Morley.lean) | **Morley's trisector theorem** (Wiedijk #84) — geometric statement, with `∃!` and non-degeneracy companions; independent formalization (see prior-art note: solved earlier on the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ pure kernel | [comparator](lean-eval/morley_theorem/) | UNICO / NOUS (Claude, Anthropic) |
