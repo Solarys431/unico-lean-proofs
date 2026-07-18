@@ -77,9 +77,32 @@ leaderboard is submission-based, so its status reflects submitted solutions,
 not an evaluation of every model. If you know of earlier geometric work on
 this theorem in Lean, please open an issue and we will cite it prominently.
 
+**Update (July 18, 2026) — all five witnesses and the full characterization.**
+The classification bounds the possible types; the converse direction is now
+certified as well: kernel-pure witnesses for all five Platonic types — the
+tetrahedron (3,3), the cube (4,3), the octahedron (3,4), the dodecahedron (5,3)
+with its golden-ratio pentagon rotation, and the icosahedron (3,5) — and the
+characterization theorem:
+
+```lean
+theorem realizzabile_iff (p q : ℕ) :
+    (∃ P : FiniteConvexPolytope E3, P.IsCyclicallyRegularOfType p q)
+    ↔ ((p = 3 ∧ q = 3) ∨ (p = 4 ∧ q = 3) ∨ (p = 3 ∧ q = 4)
+        ∨ (p = 5 ∧ q = 3) ∨ (p = 3 ∧ q = 5))
+```
+
+A type is realizable **iff** it is one of the five Platonic pairs: neither
+direction is vacuous. The engine behind the five witnesses is a reusable
+transfer module ([`Trasferimento.lean`](UnicoProofs/Platonici/Trasferimento.lean)):
+regular facets and cyclic vertex fans transport along polytope-preserving
+isometries, so each solid needs one facet and one vertex fan built by hand —
+symmetry does the rest.
+
 Modules: [`UnicoProofs/Platonici/`](UnicoProofs/Platonici/) — apex theorems in
-[`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean) and
-[`TetraedroStadio2.lean`](UnicoProofs/Platonici/TetraedroStadio2.lean).
+[`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean),
+[`Realizzabilita.lean`](UnicoProofs/Platonici/Realizzabilita.lean), and the five
+witness modules (`TetraedroStadio2`, `CuboTestimone`, `OttaedroTestimone`,
+`DodecaedroTestimone`, `IcosaedroTestimone`).
 
 ## Highlight — The Sylvester–Gallai Theorem
 
@@ -225,7 +248,7 @@ evaluation. Tagged [`morley-2026-07-12`](https://github.com/Solarys431/unico-lea
 
 | File | Statement | Trust | Verify | Proof author |
 |------|-----------|:-----:|:------:|--------------|
-| [`Platonici/`](UnicoProofs/Platonici/) | **The Platonic solids classification** (Wiedijk #50, local Schläfli types) — 3D convex polytope with orbit-regular p-gonal facets and q-cyclic vertices ⟹ q(p−2) < 2p and (p,q) is one of the five Platonic pairs (`cyclicallyRegular_schlafli`); certified tetrahedron witness (`tetraedro_cyclicallyRegular`); 25 modules | ✅ pure kernel | [comparator](comparator/platonici/) | UNICO / NOUS (Claude, Anthropic) |
+| [`Platonici/`](UnicoProofs/Platonici/) | **The Platonic solids classification** (Wiedijk #50, local Schläfli types) — 3D convex polytope with orbit-regular p-gonal facets and q-cyclic vertices ⟹ q(p−2) < 2p and (p,q) is one of the five Platonic pairs (`cyclicallyRegular_schlafli`); certified witnesses for **all five solids** and the characterization `realizzabile_iff` ((p,q) realizable ⟺ one of the five Platonic pairs); 31 modules | ✅ pure kernel | [comparator](comparator/platonici/) | UNICO / NOUS (Claude, Anthropic) |
 | [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **The Sylvester–Gallai theorem** — a finite non-collinear point set always admits a line through exactly two of its points; Kelly's proof made purely vectorial, no dimension hypothesis (see prior-art note: Sylvester–Chvátal exists in Lean 4, the classical Euclidean statement did not) | ✅ pure kernel | [comparator](comparator/sylvester_gallai/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Feuerbach's theorem** (Wiedijk #29) — nine-point circle internally tangent to the incircle (`feuerbach_insphere`) and externally tangent to the three excircles (`feuerbach_exsphere`); independent proof, 11 modules | ✅ pure kernel | [comparator](comparator/feuerbach/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Morley.lean`](UnicoProofs/Morley.lean) | **Morley's trisector theorem** (Wiedijk #84) — geometric statement, with `∃!` and non-degeneracy companions; independent formalization (see prior-art note: solved earlier on the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ pure kernel | [comparator](lean-eval/morley_theorem/) | UNICO / NOUS (Claude, Anthropic) |

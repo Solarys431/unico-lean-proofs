@@ -83,8 +83,23 @@ riflette le soluzioni inviate, non una valutazione di ogni modello. Se conosci
 lavori geometrici precedenti su questo teorema in Lean, apri pure una issue e
 li citeremo con evidenza.
 
+**Aggiornamento (18 luglio 2026): tutti e cinque i testimoni e la caratterizzazione completa.**
+La classificazione delimita i tipi possibili; adesso è certificata anche la
+direzione inversa: testimoni kernel-puri per tutti e cinque i tipi platonici
+(tetraedro (3,3), cubo (4,3), ottaedro (3,4), dodecaedro (5,3) con la rotazione
+aurea del pentagono, icosaedro (3,5)) e il teorema di caratterizzazione
+`realizzabile_iff`: un tipo (p,q) è realizzabile **se e solo se** è una delle
+cinque coppie platoniche; nessuna direzione è vacua. Il motore dei cinque
+testimoni è il modulo di trasferimento
+([`Trasferimento.lean`](UnicoProofs/Platonici/Trasferimento.lean)): faccette
+regolari e fan ciclici si trasportano lungo le isometrie che preservano il
+politopo, quindi per ogni solido bastano una faccetta e un fan costruiti a
+mano; il resto lo fa la simmetria.
+
 Moduli: [`UnicoProofs/Platonici/`](UnicoProofs/Platonici/) — teoremi apicali in
-[`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean) e
+[`Classificazione.lean`](UnicoProofs/Platonici/Classificazione.lean),
+[`Realizzabilita.lean`](UnicoProofs/Platonici/Realizzabilita.lean), i cinque
+moduli testimone, e
 [`TetraedroStadio2.lean`](UnicoProofs/Platonici/TetraedroStadio2.lean).
 
 ## In evidenza — Il teorema di Sylvester–Gallai
@@ -239,7 +254,7 @@ valutazione affidata al compilatore. Tag
 
 | File | Enunciato | Fiducia | Verifica | Autore della dimostrazione |
 |------|-----------|:-------:|:------:|----------------------------|
-| [`Platonici/`](UnicoProofs/Platonici/) | **La classificazione dei solidi platonici** (Wiedijk #50, tipi di Schläfli locali) — politopo convesso 3D con faccette p-gonali regolari per orbita e vertici q-ciclici ⟹ q(p−2) < 2p e (p,q) è una delle cinque coppie platoniche (`cyclicallyRegular_schlafli`); testimone tetraedro certificato (`tetraedro_cyclicallyRegular`); 25 moduli | ✅ kernel puro | [comparator](comparator/platonici/) | UNICO / NOUS (Claude, Anthropic) |
+| [`Platonici/`](UnicoProofs/Platonici/) | **La classificazione dei solidi platonici** (Wiedijk #50, tipi di Schläfli locali) — politopo convesso 3D con faccette p-gonali regolari per orbita e vertici q-ciclici ⟹ q(p−2) < 2p e (p,q) è una delle cinque coppie platoniche (`cyclicallyRegular_schlafli`); testimoni certificati per **tutti e cinque i solidi** e la caratterizzazione `realizzabile_iff` ((p,q) realizzabile ⟺ una delle cinque coppie); 31 moduli | ✅ kernel puro | [comparator](comparator/platonici/) | UNICO / NOUS (Claude, Anthropic) |
 | [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **Teorema di Sylvester–Gallai** — un insieme finito di punti non tutti allineati ammette sempre una retta che ne contiene esattamente due; dimostrazione di Kelly resa puramente vettoriale, senza ipotesi di dimensione (si veda la nota di prior art: Sylvester–Chvátal esiste in Lean 4, l'enunciato euclideo classico no) | ✅ kernel puro | [comparator](comparator/sylvester_gallai/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Teorema di Feuerbach** (Wiedijk #29) — circonferenza dei nove punti tangente internamente all'inscritto (`feuerbach_insphere`) ed esternamente ai tre exinscritti (`feuerbach_exsphere`); dimostrazione indipendente, 11 moduli | ✅ kernel puro | [comparator](comparator/feuerbach/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Morley.lean`](UnicoProofs/Morley.lean) | **Teorema delle trisettrici di Morley** (Wiedijk n. 84) — enunciato geometrico, con i compagni `∃!` e di non-degenerazione; formalizzazione indipendente (si veda la nota di prior art: risolto in precedenza sul [benchmark lean-eval](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ kernel puro | [comparator](lean-eval/morley_theorem/) | UNICO / NOUS (Claude, Anthropic) |

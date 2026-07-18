@@ -5,3 +5,9 @@ import UnicoProofs.Morley
 import UnicoProofs.Feuerbach.Main
 import UnicoProofs.Platonici.Classificazione
 import UnicoProofs.Platonici.TetraedroStadio2
+import UnicoProofs.Platonici.Trasferimento
+import UnicoProofs.Platonici.CuboTestimone
+import UnicoProofs.Platonici.OttaedroTestimone
+import UnicoProofs.Platonici.DodecaedroTestimone
+import UnicoProofs.Platonici.IcosaedroTestimone
+import UnicoProofs.Platonici.Realizzabilita

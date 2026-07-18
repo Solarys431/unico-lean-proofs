@@ -122,6 +122,26 @@ status:
       file: "UnicoProofs/Platonici/TetraedroStadio2.lean"
       sorry_count: 0
       axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "cubo_cyclicallyRegular"
+      file: "UnicoProofs/Platonici/CuboTestimone.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "ottaedro_cyclicallyRegular"
+      file: "UnicoProofs/Platonici/OttaedroTestimone.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "dodecaedro_cyclicallyRegular"
+      file: "UnicoProofs/Platonici/DodecaedroTestimone.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "icosaedro_cyclicallyRegular"
+      file: "UnicoProofs/Platonici/IcosaedroTestimone.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "realizzabile_iff"
+      file: "UnicoProofs/Platonici/Realizzabilita.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
     - declaration: "erdos_1064_k2"
       file: "UnicoProofs/Erdos1064K2.lean"
       sorry_count: 0
@@ -267,6 +287,14 @@ alignment:
     - source: "Non-vacuity of the Platonic classification: the regular tetrahedron satisfies the predicate for (3,3)"
       lean: "tetraedro_cyclicallyRegular"
       module: "UnicoProofs/Platonici/TetraedroStadio2.lean"
+      status: "proved"
+    - source: "Existence of all five Platonic solids as cyclically regular polytopes: cube (4,3), octahedron (3,4), dodecahedron (5,3), icosahedron (3,5)"
+      lean: "cubo_cyclicallyRegular, ottaedro_cyclicallyRegular, dodecaedro_cyclicallyRegular, icosaedro_cyclicallyRegular"
+      module: "UnicoProofs/Platonici/ (witness modules)"
+      status: "proved"
+    - source: "Characterization: a type (p,q) is realizable by a cyclically regular polytope iff it is one of the five Platonic pairs"
+      lean: "realizzabile_iff"
+      module: "UnicoProofs/Platonici/Realizzabilita.lean"
       status: "proved"
 
 acknowledgements: >-
