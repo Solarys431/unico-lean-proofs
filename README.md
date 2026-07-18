@@ -98,6 +98,35 @@ regular facets and cyclic vertex fans transport along polytope-preserving
 isometries, so each solid needs one facet and one vertex fan built by hand —
 symmetry does the rest.
 
+**Update (July 18, 2026, third release): the bridge from flag-transitivity
+to the five Schläfli pairs.** On the benchmark's own contract we certify:
+
+```lean
+theorem regolare_schlafli (P : ConvexPolytope 3) (hreg : P.IsRegular) :
+    ∃ p q : ℕ, P.asFinite.IsCyclicallyRegularOfType p q ∧
+      ((p = 3 ∧ q = 3) ∨ (p = 4 ∧ q = 3) ∨ (p = 3 ∧ q = 4) ∨
+       (p = 5 ∧ q = 3) ∨ (p = 3 ∧ q = 5))
+```
+
+Every regular 3-polytope (flag-transitive in the benchmark's sense) carries
+the structure our classification engine consumes: every facet is a regular
+p-gon traced by an isometry orbit, every vertex figure is a q-cyclic fan,
+and (p, q) is one of the five Platonic pairs
+([`Ponte.lean`](UnicoProofs/Platonici/Ponte.lean)). The 31 new modules build
+the full ladder from the contract's definitions: existence of flags through
+any vertex or facet, uniqueness of the flag transporter (a symmetry fixing a
+flag fixes four affinely independent barycenters, hence is the identity),
+the diamond property in both directions (every edge lies in exactly two
+facets, every polygon vertex lies in exactly two edges), fan connectivity
+via a simplex walk, the deterministic fan cycle with simultaneous return of
+facet and edge, and transport lemmas that make p, q and the edge length
+uniform across the polytope. This closes the bridge phase. What remains for
+the benchmark's 3D equality is rigidity: two regular polytopes of the same
+type are similar. The first tool of that phase is included
+([`SimilarEquiv.lean`](UnicoProofs/Platonici/SimilarEquiv.lean): similarity
+is an equivalence). As always, if you know prior art we should cite, please
+open an issue.
+
 **Update (July 18, 2026, second release) — the 3D lower bound on the lean-eval
 benchmark's own definitions.** The [lean-eval benchmark](https://github.com/leanprover/lean-eval)
 states the Platonic classification problem on its own clean definitions
@@ -268,7 +297,7 @@ evaluation. Tagged [`morley-2026-07-12`](https://github.com/Solarys431/unico-lea
 
 | File | Statement | Trust | Verify | Proof author |
 |------|-----------|:-----:|:------:|--------------|
-| [`Platonici/`](UnicoProofs/Platonici/) | **The Platonic solids classification** (Wiedijk #50, local Schläfli types) — 3D convex polytope with orbit-regular p-gonal facets and q-cyclic vertices ⟹ q(p−2) < 2p and (p,q) is one of the five Platonic pairs (`cyclicallyRegular_schlafli`); certified witnesses for **all five solids**, the characterization `realizzabile_iff`, and the lean-eval-contract lower bound `cinque_le_platonicCount3 : 5 ≤ platonicCount 3` (flag-transitivity of all five, similarity invariant, class count); 36 modules | ✅ pure kernel | [comparator](comparator/platonici/) | UNICO / NOUS (Claude, Anthropic) |
+| [`Platonici/`](UnicoProofs/Platonici/) | **The Platonic solids classification** (Wiedijk #50, local Schläfli types) — 3D convex polytope with orbit-regular p-gonal facets and q-cyclic vertices ⟹ q(p−2) < 2p and (p,q) is one of the five Platonic pairs (`cyclicallyRegular_schlafli`); certified witnesses for **all five solids**, the characterization `realizzabile_iff`, and the lean-eval-contract lower bound `cinque_le_platonicCount3 : 5 ≤ platonicCount 3` (flag-transitivity of all five, similarity invariant, class count); the bridge `regolare_schlafli` (every flag-transitive 3-polytope is cyclically regular of one of the five types); 68 modules | ✅ pure kernel | [comparator](comparator/platonici/) | UNICO / NOUS (Claude, Anthropic) |
 | [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **The Sylvester–Gallai theorem** — a finite non-collinear point set always admits a line through exactly two of its points; Kelly's proof made purely vectorial, no dimension hypothesis (see prior-art note: Sylvester–Chvátal exists in Lean 4, the classical Euclidean statement did not) | ✅ pure kernel | [comparator](comparator/sylvester_gallai/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Feuerbach's theorem** (Wiedijk #29) — nine-point circle internally tangent to the incircle (`feuerbach_insphere`) and externally tangent to the three excircles (`feuerbach_exsphere`); independent proof, 11 modules | ✅ pure kernel | [comparator](comparator/feuerbach/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Morley.lean`](UnicoProofs/Morley.lean) | **Morley's trisector theorem** (Wiedijk #84) — geometric statement, with `∃!` and non-degeneracy companions; independent formalization (see prior-art note: solved earlier on the [lean-eval benchmark](https://leanprover.github.io/lean-eval-leaderboard/problems/morley_theorem)) | ✅ pure kernel | [comparator](lean-eval/morley_theorem/) | UNICO / NOUS (Claude, Anthropic) |

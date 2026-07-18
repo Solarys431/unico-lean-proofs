@@ -96,6 +96,38 @@ regolari e fan ciclici si trasportano lungo le isometrie che preservano il
 politopo, quindi per ogni solido bastano una faccetta e un fan costruiti a
 mano; il resto lo fa la simmetria.
 
+**Aggiornamento (18 luglio 2026, terza release): il ponte dalla
+flag-transitività alle cinque coppie di Schläfli.** Sul contratto del
+benchmark certifichiamo:
+
+```lean
+theorem regolare_schlafli (P : ConvexPolytope 3) (hreg : P.IsRegular) :
+    ∃ p q : ℕ, P.asFinite.IsCyclicallyRegularOfType p q ∧
+      ((p = 3 ∧ q = 3) ∨ (p = 4 ∧ q = 3) ∨ (p = 3 ∧ q = 4) ∨
+       (p = 5 ∧ q = 3) ∨ (p = 3 ∧ q = 5))
+```
+
+Ogni 3-politopo regolare (flag-transitivo nel senso del benchmark) porta la
+struttura che il nostro motore di classificazione consuma: ogni faccetta è
+un p-gono regolare tracciato dall'orbita di un'isometria, ogni figura al
+vertice è un ventaglio q-ciclico, e (p, q) è una delle cinque coppie
+platoniche ([`Ponte.lean`](UnicoProofs/Platonici/Ponte.lean)). I 31 moduli
+nuovi costruiscono l'intera scala a partire dalle definizioni del contratto:
+esistenza di bandiere per ogni vertice e faccetta, unicità del trasportatore
+di bandiere (una simmetria che fissa una bandiera fissa quattro baricentri
+affinemente indipendenti, quindi è l'identità), la proprietà del diamante in
+entrambi i versi (ogni spigolo sta in esattamente due faccette, ogni vertice
+di poligono in esattamente due spigoli), la connettività del ventaglio con
+una camminata del simplesso, il ciclo deterministico del ventaglio con
+ritorno simultaneo di faccetta e spigolo, e i lemmi di trasporto che rendono
+p, q e la lunghezza dello spigolo uniformi su tutto il politopo. Questo
+chiude la fase del ponte. Per l'uguaglianza 3D del benchmark resta la
+rigidità: due politopi regolari dello stesso tipo sono simili. Il primo
+attrezzo di quella fase è incluso
+([`SimilarEquiv.lean`](UnicoProofs/Platonici/SimilarEquiv.lean): la
+similarità è un'equivalenza). Come sempre, se conosci lavori precedenti che
+dovremmo citare, apri pure una issue.
+
 **Aggiornamento (18 luglio 2026, seconda release): il lower bound 3D sulle
 definizioni del benchmark lean-eval.** Il benchmark enuncia la classificazione
 platonica su definizioni proprie (bandiere, `IsRegular` come flag-transitività,
