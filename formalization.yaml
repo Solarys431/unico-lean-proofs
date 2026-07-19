@@ -147,15 +147,71 @@ status:
       sorry_count: 0
       axioms: ["propext", "Classical.choice", "Quot.sound"]
       note: "lower bound on the lean-eval benchmark's own definitions; the matching upper bound is now proved, see platonicCount_three"
+    - declaration: "platonicCount_two"
+      file: "UnicoProofs/Platonici/TeoremaDim2.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: "first conjunct of the lean-eval statement: platonicCount 2 = top (the regular polygons form an infinite family)"
     - declaration: "platonicCount_three"
       file: "UnicoProofs/Platonici/TeoremaPlatonici.lean"
       sorry_count: 0
       axioms: ["propext", "Classical.choice", "Quot.sound"]
-      note: "second conjunct of the lean-eval statement; the other three (d = 2, d = 4, d >= 5) are open here"
+      note: "second conjunct of the lean-eval statement; d = 2 is also proved (platonicCount_two), d = 4 and d >= 5 remain open here"
     - declaration: "rigidita_stesso_tipo"
       file: "UnicoProofs/Platonici/Chiusura2.lean"
       sorry_count: 0
       axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "gram_canonica"
+      file: "UnicoProofs/Platonici/GramCanonica.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: >-
+        From P.IsRegular alone (full-dimensional, dimension >= 3), the canonical
+        Coxeter matrix of the simple-root normals: diagonal 1, off-tridiagonal 0,
+        adjacent entry exactly -cos(pi / m_i). No auxiliary data supplied by the
+        caller. Together with gram_canonica_definita_positiva this is the
+        certified Coxeter-Schlafli engine; it is infrastructure toward the
+        dimension-by-dimension platonicCount benchmark, not itself a conjunct.
+    - declaration: "rotazione_elementare_incondizionata"
+      file: "UnicoProofs/Platonici/DatiDelResiduo.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: >-
+        The elementary-rotation collapse (k = 1): for a regular polytope the
+        product of two adjacent simple reflections realizes the elementary
+        rotation of its rank-3 residue, so |<alpha_i, alpha_(i+1)>| = cos(pi / m_i).
+        This is the step that distinguishes an adjacent reflection from an
+        arbitrary generator of the same dihedral group.
+    - declaration: "classificazione_dim4"
+      file: "UnicoProofs/Platonici/ClassDim4.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: >-
+        Algebraic classification of the admissible Schlafli symbols in dimension
+        four: a positive-definite tridiagonal Coxeter string (a, b, c) with each
+        order >= 3 is one of the six (3,3,3), (4,3,3), (3,3,4), (3,4,3), (5,3,3),
+        (3,3,5). This enumerates the admissible symbols; existence and uniqueness
+        of a polytope per symbol (hence platonicCount 4 = 6) are still open here.
+    - declaration: "ortoplesse_isRegular"
+      file: "UnicoProofs/Platonici/OrtoplesseFacce.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: "the cross-polytope {+-e_i} is a regular polytope in every dimension d >= 1 (2d vertices); one of the three high-dimensional families"
+    - declaration: "simplesso_isRegular"
+      file: "UnicoProofs/Platonici/Simplesso.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: "the regular simplex is a regular polytope in every dimension d >= 1 (d+1 vertices); one of the three high-dimensional families"
+    - declaration: "tre_le_platonicCount"
+      file: "UnicoProofs/Platonici/LowerBound.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: >-
+        The high-dimensional lower-bound framework: three regular witnesses with
+        vertex counts d+1, 2d, 2^d give 3 <= platonicCount d for d >= 5. Applied
+        it becomes unconditional once the simplex, cross-polytope and hypercube
+        are all present as regular witnesses (simplex and cross-polytope done;
+        hypercube in progress).
     - declaration: "erdos_1064_k2"
       file: "UnicoProofs/Erdos1064K2.lean"
       sorry_count: 0
