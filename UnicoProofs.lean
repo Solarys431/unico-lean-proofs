@@ -101,3 +101,5 @@ import UnicoProofs.Platonici.SecondoIntermedio
 import UnicoProofs.Platonici.Simplesso
 import UnicoProofs.Platonici.Trasportatore
 import UnicoProofs.Platonici.TreIntermedie
+import UnicoProofs.Platonici.Ipercubo
+import UnicoProofs.Platonici.LowerBoundFinale

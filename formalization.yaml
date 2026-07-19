@@ -208,10 +208,22 @@ status:
       axioms: ["propext", "Classical.choice", "Quot.sound"]
       note: >-
         The high-dimensional lower-bound framework: three regular witnesses with
-        vertex counts d+1, 2d, 2^d give 3 <= platonicCount d for d >= 5. Applied
-        it becomes unconditional once the simplex, cross-polytope and hypercube
-        are all present as regular witnesses (simplex and cross-polytope done;
-        hypercube in progress).
+        vertex counts d+1, 2d, 2^d give 3 <= platonicCount d for d >= 5.
+    - declaration: "ipercubo_isRegular"
+      file: "UnicoProofs/Platonici/Ipercubo.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: "the hypercube {+-1}^d is a regular polytope in every dimension d >= 1 (2^d vertices); the third high-dimensional family"
+    - declaration: "three_le_platonicCount"
+      file: "UnicoProofs/Platonici/LowerBoundFinale.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: >-
+        Unconditional high-dimensional lower bound: for d >= 5, 3 <= platonicCount d,
+        obtained by applying the framework to the three regular witnesses (simplex,
+        cross-polytope, hypercube), now all certified. The matching upper bound
+        platonicCount d = 3 (uniform classification and uniqueness per symbol)
+        remains open here.
     - declaration: "erdos_1064_k2"
       file: "UnicoProofs/Erdos1064K2.lean"
       sorry_count: 0
