@@ -49,3 +49,4 @@ import UnicoProofs.Platonici.TrasportoFaccetta
 import UnicoProofs.Platonici.VerticeCiclico
 import UnicoProofs.Platonici.VerticiEsposti
 import UnicoProofs.Platonici.TeoremaPlatonici
+import UnicoProofs.Platonici.TeoremaDim2

@@ -67,6 +67,39 @@ nor a global identification of facets:
 
 Dimensions 2, 4 and d >= 5 are still open in this repository.
 
+## The plane: infinitely many
+
+```lean
+theorem platonicCount_two : platonicCount 2 = ⊤
+```
+
+([`TeoremaDim2.lean`](UnicoProofs/Platonici/TeoremaDim2.lean), same three
+axioms.)
+
+This is the easiest of the four conjuncts: no upper bound is needed, since
+`⊤` only asks for infinitely many classes. The regular `n`-gon is built from
+the `n`-th roots of unity
+([`PoligonoRegolare.lean`](UnicoProofs/Platonici/PoligonoRegolare.lean)) and
+shown regular through the dihedral action on its flags: rotations move the
+vertex, the reflection swaps the two incident edges
+([`PoligonoDiedrale.lean`](UnicoProofs/Platonici/PoligonoDiedrale.lean)).
+Since similar polytopes have the same number of vertices, polygons with
+different side counts fall in different classes.
+
+## Where this stands against the benchmark
+
+The lean-eval statement is a conjunction of four claims:
+
+```lean
+platonicCount 2 = ⊤ ∧ platonicCount 3 = 5 ∧
+platonicCount 4 = 6 ∧ ∀ d, 5 ≤ d → platonicCount d = 3
+```
+
+Two of them are proved here (d = 2 and d = 3). The other two are open in
+this repository: dimension 4 needs six classes, among them the 24-cell,
+the 120-cell and the 600-cell; dimensions d >= 5 need an upper bound, that
+is a classification argument, not just the three witnesses.
+
 ## Highlight — The Platonic Solids Classification (Wiedijk #50)
 
 *The theorem that closes Euclid's Elements (XIII.18 and scholium), proved

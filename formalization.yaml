@@ -146,7 +146,16 @@ status:
       file: "UnicoProofs/Platonici/RegolariBenchmark.lean"
       sorry_count: 0
       axioms: ["propext", "Classical.choice", "Quot.sound"]
-      note: "lower bound on the lean-eval benchmark's own definitions; the equality (upper bound) is future work"
+      note: "lower bound on the lean-eval benchmark's own definitions; the matching upper bound is now proved, see platonicCount_three"
+    - declaration: "platonicCount_three"
+      file: "UnicoProofs/Platonici/TeoremaPlatonici.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: "second conjunct of the lean-eval statement; the other three (d = 2, d = 4, d >= 5) are open here"
+    - declaration: "rigidita_stesso_tipo"
+      file: "UnicoProofs/Platonici/Chiusura2.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
     - declaration: "erdos_1064_k2"
       file: "UnicoProofs/Erdos1064K2.lean"
       sorry_count: 0
