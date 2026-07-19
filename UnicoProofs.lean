@@ -48,3 +48,4 @@ import UnicoProofs.Platonici.TrasportoData
 import UnicoProofs.Platonici.TrasportoFaccetta
 import UnicoProofs.Platonici.VerticeCiclico
 import UnicoProofs.Platonici.VerticiEsposti
+import UnicoProofs.Platonici.TeoremaPlatonici

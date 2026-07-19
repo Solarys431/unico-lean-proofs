@@ -31,6 +31,42 @@ verify our claims without trusting our build: see **[PIPELINE.md](PIPELINE.md)**
 
 ---
 
+## The exact count in dimension three
+
+The benchmark's own counting function is now settled for d = 3:
+
+```lean
+theorem platonicCount_three : platonicCount 3 = 5
+```
+
+([`TeoremaPlatonici.lean`](UnicoProofs/Platonici/TeoremaPlatonici.lean),
+depends on `propext`, `Classical.choice`, `Quot.sound` only.)
+
+The lower bound was already available from the five explicit witnesses. The
+upper bound needed rigidity: two regular 3-polytopes of the same cyclic type
+are similar
+([`Chiusura2.lean`](UnicoProofs/Platonici/Chiusura2.lean)). The proof works
+through canonical invariants only, and uses neither Cauchy's rigidity theorem
+nor a global identification of facets:
+
+1. the scaling factor comes from the diameters of exposed edges, so it does
+   not depend on the orbit generator of a facet
+   ([`Fattore.lean`](UnicoProofs/Platonici/Fattore.lean));
+2. two vertex fans with equal Gram matrices are related by an affine isometry
+   ([`Registro.lean`](UnicoProofs/Platonici/Registro.lean)); the argument
+   transports linear relations directly, so it tolerates redundant families;
+3. positive homotheties leave unit rays unchanged and isometries act on them
+   through their linear part alone
+   ([`RaggiTrasporto.lean`](UnicoProofs/Platonici/RaggiTrasporto.lean));
+4. fan alignment propagates from one vertex to its neighbours
+   ([`Orientazione.lean`](UnicoProofs/Platonici/Orientazione.lean)) and then,
+   along the vertex graph, to the whole polytope
+   ([`InduzioneFinale.lean`](UnicoProofs/Platonici/InduzioneFinale.lean));
+5. equal vertex sets give equal convex hulls
+   ([`CorpiUguali.lean`](UnicoProofs/Platonici/CorpiUguali.lean)).
+
+Dimensions 2, 4 and d >= 5 are still open in this repository.
+
 ## Highlight — The Platonic Solids Classification (Wiedijk #50)
 
 *The theorem that closes Euclid's Elements (XIII.18 and scholium), proved

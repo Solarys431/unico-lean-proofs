@@ -330,6 +330,23 @@ alignment:
       module: "UnicoProofs/Platonici/Ponte.lean"
       status: "proved"
 
+    - source: "Rigidity: two regular 3-polytopes with the same cyclic type (p,q) are similar"
+      lean: "rigidita_stesso_tipo"
+      module: "UnicoProofs/Platonici/Chiusura2.lean"
+      status: "proved"
+    - source: "Registration: two vertex fans with equal Gram matrices are related by an affine isometry"
+      lean: "registro_del_fan, isometria_da_gram"
+      module: "UnicoProofs/Platonici/Registro.lean"
+      status: "proved"
+    - source: "Propagation: fan alignment spreads along the vertex graph, giving equal vertex sets"
+      lean: "allineati_ovunque, corpi_uguali_dai_vertici"
+      module: "UnicoProofs/Platonici/CorpiUguali.lean"
+      status: "proved"
+    - source: "The exact count of Platonic solids in dimension three"
+      lean: "platonicCount_three"
+      module: "UnicoProofs/Platonici/TeoremaPlatonici.lean"
+      status: "proved"
+
 acknowledgements: >-
   The mathlib community for the library this builds on; Alain Connes for the
   proof strategy that inspired the algebraic core; Jeremy Chen for pointing us
