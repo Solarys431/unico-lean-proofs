@@ -3,8 +3,7 @@
   "solution_module": "Solution",
   "theorem_names": [
     "PlatoniciMain.cyclicallyRegular_schlafli",
-    "PlatoniciMain.exists_cyclicallyRegular",
-    "PlatoniciMain.platonicCount_three"
+    "PlatoniciMain.exists_cyclicallyRegular"
   ],
   "permitted_axioms": [
     "propext",
