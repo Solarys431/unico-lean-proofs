@@ -103,3 +103,13 @@ import UnicoProofs.Platonici.Trasportatore
 import UnicoProofs.Platonici.TreIntermedie
 import UnicoProofs.Platonici.Ipercubo
 import UnicoProofs.Platonici.LowerBoundFinale
+import UnicoProofs.Platonici.GramPositiva
+import UnicoProofs.Platonici.DetTridiagonale
+import UnicoProofs.Platonici.PonteSylvester
+import UnicoProofs.Platonici.GramBlocchiContigui
+import UnicoProofs.Platonici.TripleAmmesse
+import UnicoProofs.Platonici.QuadrupleAmmesse
+import UnicoProofs.Platonici.FinestraQuattro
+import UnicoProofs.Platonici.PropagazioneFinestre
+import UnicoProofs.Platonici.DoppioQuattro
+import UnicoProofs.Platonici.EsclusivitaAlta

@@ -423,6 +423,18 @@ alignment:
       lean: "platonicCount_three"
       module: "UnicoProofs/Platonici/TeoremaPlatonici.lean"
       status: "proved"
+    - source: "Sylvester's criterion bridge: the canonical Coxeter Gram matrix of a regular polytope (d >= 3) is positive definite, so every leading principal minor is strictly positive"
+      lean: "canonicalGram_positive_minori"
+      module: "UnicoProofs/Platonici/PonteSylvester.lean"
+      status: "proved"
+    - source: "The determinant of the tridiagonal Coxeter matrix satisfies the parametric two-step recurrence D(k+2) = D(k+1) - c_k^2 * D(k), identified with the Gram minor for all k"
+      lean: "det_tridiagonale"
+      module: "UnicoProofs/Platonici/DetTridiagonale.lean"
+      status: "proved"
+    - source: "High-dimensional Schlafli exclusivity: every regular polytope in dimension d >= 5 has one of exactly three symbols, {3,...,3}, {4,3,...,3} or {3,...,3,4}"
+      lean: "schlafli_high_dim_exclusive"
+      module: "UnicoProofs/Platonici/EsclusivitaAlta.lean"
+      status: "proved"
 
 acknowledgements: >-
   The mathlib community for the library this builds on; Alain Connes for the
