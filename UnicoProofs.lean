@@ -113,3 +113,4 @@ import UnicoProofs.Platonici.FinestraQuattro
 import UnicoProofs.Platonici.PropagazioneFinestre
 import UnicoProofs.Platonici.DoppioQuattro
 import UnicoProofs.Platonici.EsclusivitaAlta
+import UnicoProofs.Platonici.CellVentiquattro
