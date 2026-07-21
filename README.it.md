@@ -33,6 +33,31 @@ build: **[PIPELINE.md](PIPELINE.md)** (in inglese).
 
 ---
 
+## La classificazione completa — risolta e verificata dalla CI (21 luglio 2026)
+
+L'enunciato integrale del problema lean-eval `platonic_classification` è
+dimostrato e registrato ufficialmente sulla leaderboard pubblica:
+
+```lean
+theorem platonic_classification :
+    platonicCount 2 = ⊤ ∧ platonicCount 3 = 5 ∧
+      platonicCount 4 = 6 ∧ ∀ d, 5 ≤ d → platonicCount d = 3
+```
+
+- Valutato dalla CI ufficiale di lean-eval e registrato il 21 luglio 2026:
+  [voce sulla leaderboard](https://lean-lang.org/eval/problems/platonic_classification/).
+- Il workspace valutato (137 moduli, con le costruzioni esplicite e le
+  dimostrazioni di regolarità del 24-cell, del 600-cell e del 120-cell,
+  il motore di Coxeter–Gram certificato per i maggioranti e il teorema di
+  rigidità per simbolo di Schläfli) vive nel repository gemello
+  [`Solarys431/lean-eval-platonic-classification`](https://github.com/Solarys431/lean-eval-platonic-classification),
+  pubblico al commit esatto giudicato dalla CI.
+- Assiomi del teorema finale: `propext`, `Classical.choice`, `Quot.sound`;
+  nessun `sorry`, nessun `native_decide`.
+
+Le sezioni seguenti documentano i risultati parziali autonomi ospitati
+direttamente in questo repository.
+
 ## In evidenza — La classificazione dei solidi platonici (Wiedijk #50)
 
 *Il teorema che chiude gli Elementi di Euclide (XIII.18 e scolio), dimostrato
@@ -298,6 +323,7 @@ valutazione affidata al compilatore. Tag
 
 | File | Enunciato | Fiducia | Verifica | Autore della dimostrazione |
 |------|-----------|:-------:|:------:|----------------------------|
+| [`lean-eval-platonic-classification`](https://github.com/Solarys431/lean-eval-platonic-classification) | **La classificazione completa dei politopi regolari** (lean-eval `platonic_classification`) — `platonicCount 2 = ⊤ ∧ platonicCount 3 = 5 ∧ platonicCount 4 = 6 ∧ ∀ d ≥ 5, platonicCount d = 3` sulle definizioni del benchmark; 24-cell, 600-cell e 120-cell espliciti con dimostrazioni di regolarità; valutato e registrato dalla CI ufficiale ([leaderboard](https://lean-lang.org/eval/problems/platonic_classification/)); 137 moduli (repository gemello) | ✅ kernel puro | [registrazione CI](https://lean-lang.org/eval/problems/platonic_classification/) | UNICO / NOUS (Claude Fable 5 + Opus 4.8, Anthropic; GPT-5.6-Sol, OpenAI) |
 | [`Platonici/`](UnicoProofs/Platonici/) | **La classificazione dei solidi platonici** (Wiedijk #50, tipi di Schläfli locali) — politopo convesso 3D con faccette p-gonali regolari per orbita e vertici q-ciclici ⟹ q(p−2) < 2p e (p,q) è una delle cinque coppie platoniche (`cyclicallyRegular_schlafli`); testimoni certificati per **tutti e cinque i solidi** e la caratterizzazione `realizzabile_iff` ((p,q) realizzabile ⟺ una delle cinque coppie); 31 moduli | ✅ kernel puro | [comparator](comparator/platonici/) | UNICO / NOUS (Claude, Anthropic) |
 | [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **Teorema di Sylvester–Gallai** — un insieme finito di punti non tutti allineati ammette sempre una retta che ne contiene esattamente due; dimostrazione di Kelly resa puramente vettoriale, senza ipotesi di dimensione (si veda la nota di prior art: Sylvester–Chvátal esiste in Lean 4, l'enunciato euclideo classico no) | ✅ kernel puro | [comparator](comparator/sylvester_gallai/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Teorema di Feuerbach** (Wiedijk #29) — circonferenza dei nove punti tangente internamente all'inscritto (`feuerbach_insphere`) ed esternamente ai tre exinscritti (`feuerbach_exsphere`); dimostrazione indipendente, 11 moduli | ✅ kernel puro | [comparator](comparator/feuerbach/) | UNICO / NOUS (Claude, Anthropic) |

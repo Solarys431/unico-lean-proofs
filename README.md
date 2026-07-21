@@ -31,6 +31,32 @@ verify our claims without trusting our build: see **[PIPELINE.md](PIPELINE.md)**
 
 ---
 
+## The complete classification — solved and CI-verified (2026-07-21)
+
+The full lean-eval `platonic_classification` statement is proved and
+officially recorded on the public leaderboard:
+
+```lean
+theorem platonic_classification :
+    platonicCount 2 = ⊤ ∧ platonicCount 3 = 5 ∧
+      platonicCount 4 = 6 ∧ ∀ d, 5 ≤ d → platonicCount d = 3
+```
+
+- Evaluated by the official lean-eval CI and recorded on 2026-07-21:
+  [leaderboard entry](https://lean-lang.org/eval/problems/platonic_classification/).
+- The evaluated workspace (137 modules, including explicit constructions
+  with regularity proofs of the 24-cell, the 600-cell and the 120-cell,
+  a certified Coxeter–Gram engine for the upper bounds, and a similarity
+  rigidity theorem per Schläfli symbol) lives in the companion repository
+  [`Solarys431/lean-eval-platonic-classification`](https://github.com/Solarys431/lean-eval-platonic-classification),
+  public at the exact commit judged by the CI.
+- Axioms of the final theorem: `propext`, `Classical.choice`,
+  `Quot.sound`; no `sorry`, no `native_decide`.
+
+The sections below document the earlier, self-contained partial results
+that this repository hosts directly (d = 2 and d = 3), with their own
+comparator setups.
+
 ## The exact count in dimension three
 
 The benchmark's own counting function is now settled for d = 3:
@@ -65,7 +91,7 @@ nor a global identification of facets:
 5. equal vertex sets give equal convex hulls
    ([`CorpiUguali.lean`](UnicoProofs/Platonici/CorpiUguali.lean)).
 
-Dimensions 2, 4 and d >= 5 are still open in this repository.
+The full four-conjunct statement, including dimensions 4 and d >= 5, is settled in the companion submission repository (see the section above).
 
 ## The plane: infinitely many
 
@@ -95,10 +121,13 @@ platonicCount 2 = ⊤ ∧ platonicCount 3 = 5 ∧
 platonicCount 4 = 6 ∧ ∀ d, 5 ≤ d → platonicCount d = 3
 ```
 
-Two of them are proved here (d = 2 and d = 3). The other two are open in
-this repository: dimension 4 needs six classes, among them the 24-cell,
-the 120-cell and the 600-cell; dimensions d >= 5 need an upper bound, that
-is a classification argument, not just the three witnesses.
+All four conjuncts are now proved, and the full statement was evaluated
+and recorded by the official CI on 2026-07-21
+([leaderboard entry](https://lean-lang.org/eval/problems/platonic_classification/)). This repository hosts the d = 2 and
+d = 3 conjuncts as self-contained developments; the complete evaluated
+workspace, including the three exceptional 4-polytopes built vertex by
+vertex, lives in
+[`Solarys431/lean-eval-platonic-classification`](https://github.com/Solarys431/lean-eval-platonic-classification).
 
 ## Highlight — The Platonic Solids Classification (Wiedijk #50)
 
@@ -366,6 +395,7 @@ evaluation. Tagged [`morley-2026-07-12`](https://github.com/Solarys431/unico-lea
 
 | File | Statement | Trust | Verify | Proof author |
 |------|-----------|:-----:|:------:|--------------|
+| [`lean-eval-platonic-classification`](https://github.com/Solarys431/lean-eval-platonic-classification) | **The complete regular-polytope classification** (lean-eval `platonic_classification`) — `platonicCount 2 = ⊤ ∧ platonicCount 3 = 5 ∧ platonicCount 4 = 6 ∧ ∀ d ≥ 5, platonicCount d = 3` on the benchmark's own definitions; explicit 24-cell, 600-cell and 120-cell with regularity proofs; evaluated and recorded by the official CI ([leaderboard](https://lean-lang.org/eval/problems/platonic_classification/)); 137 modules (companion repository) | ✅ pure kernel | [CI record](https://lean-lang.org/eval/problems/platonic_classification/) | UNICO / NOUS (Claude Fable 5 + Opus 4.8, Anthropic; GPT-5.6-Sol, OpenAI) |
 | [`Platonici/`](UnicoProofs/Platonici/) | **The Platonic solids classification** (Wiedijk #50, local Schläfli types) — 3D convex polytope with orbit-regular p-gonal facets and q-cyclic vertices ⟹ q(p−2) < 2p and (p,q) is one of the five Platonic pairs (`cyclicallyRegular_schlafli`); certified witnesses for **all five solids**, the characterization `realizzabile_iff`, and the lean-eval-contract lower bound `cinque_le_platonicCount3 : 5 ≤ platonicCount 3` (flag-transitivity of all five, similarity invariant, class count); the bridge `regolare_schlafli` (every flag-transitive 3-polytope is cyclically regular of one of the five types); 68 modules | ✅ pure kernel | [comparator](comparator/platonici/) | UNICO / NOUS (Claude, Anthropic) |
 | [`SylvesterGallai.lean`](UnicoProofs/SylvesterGallai.lean) | **The Sylvester–Gallai theorem** — a finite non-collinear point set always admits a line through exactly two of its points; Kelly's proof made purely vectorial, no dimension hypothesis (see prior-art note: Sylvester–Chvátal exists in Lean 4, the classical Euclidean statement did not) | ✅ pure kernel | [comparator](comparator/sylvester_gallai/) | UNICO / NOUS (Claude, Anthropic) |
 | [`Feuerbach/`](UnicoProofs/Feuerbach/) | **Feuerbach's theorem** (Wiedijk #29) — nine-point circle internally tangent to the incircle (`feuerbach_insphere`) and externally tangent to the three excircles (`feuerbach_exsphere`); independent proof, 11 modules | ✅ pure kernel | [comparator](comparator/feuerbach/) | UNICO / NOUS (Claude, Anthropic) |
