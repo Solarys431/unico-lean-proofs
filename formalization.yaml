@@ -9,6 +9,20 @@ project:
   license: "Apache-2.0"
 
 sources:
+  - title: "The classification of regular polytopes in every dimension (lean-eval platonic_classification)"
+    authors:
+      - "Ludwig Schläfli (classification, 1850s); Harold S. M. Coxeter (modern treatment)"
+    id: "https://github.com/leanprover/lean-eval (problem platonic_classification)"
+    type: "classical theorem (19th century), stated as a lean-eval benchmark problem"
+    license: "public domain (mathematics); benchmark definitions Apache-2.0"
+    author_contacted: "n/a"
+    prior_work: >-
+      Complete solution (2026-07-21), evaluated and recorded by the official
+      lean-eval CI (https://lean-lang.org/eval/problems/platonic_classification/).
+      Builds on our earlier partial conjuncts (platonicCount 2 and 3). Harrison
+      proved the dimension-3 classification in HOL Light; we are not aware of a
+      previous complete formalization of the dimension-by-dimension count in
+      any proof assistant.
   - title: "The Platonic solids classification, local Schläfli types (Wiedijk #50)"
     authors:
       - "Euclid (Elements XIII.18 and scholium)"
@@ -22,8 +36,8 @@ sources:
       (Schläfli pairs as bare naturals with the inequality postulated, e.g. in
       rjwalters/lean-genius). A related but stronger problem on the lean-eval
       leaderboard (dimension-by-dimension platonicCount, with flag transitivity
-      and similarity) is a different, larger target that this work does not
-      claim. Our statement lives on an abstract real inner-product space:
+      and similarity) was subsequently solved by this pipeline as well
+      (2026-07-21, see the entry above). Our statement lives on an abstract real inner-product space:
       facet regularity defined by isometry orbit (no postulated angles), vertex
       fans as pure incidence structure, the angular inequality derived, plus a
       certified tetrahedron witness. Scope: necessity of the five pairs and one
@@ -87,6 +101,18 @@ status:
   sorry_in_definitions: 0
   axioms: ["propext", "Classical.choice", "Quot.sound", "Lean.ofReduceBool (Erdos1148Counterexample only, via native_decide)"]
   main_results:
+    - declaration: "platonic_classification"
+      file: "Submission/ClassificazioneFinale.lean (repo Solarys431/lean-eval-platonic-classification)"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      note: >-
+        The full lean-eval benchmark statement: platonicCount 2 = top,
+        platonicCount 3 = 5, platonicCount 4 = 6, and platonicCount d = 3 for
+        every d >= 5, on the benchmark's own definitions. Includes explicit
+        constructions with regularity proofs of the 24-cell, 600-cell and
+        120-cell, a certified Coxeter-Gram engine for the upper bounds, and a
+        similarity rigidity theorem per Schlafli symbol. Evaluated and
+        recorded by the official CI (https://lean-lang.org/eval/problems/platonic_classification/).
     - declaration: "SylvesterGallai.sylvester_gallai"
       file: "UnicoProofs/SylvesterGallai.lean"
       sorry_count: 0
@@ -338,6 +364,10 @@ review:
 alignment:
   namespace: ""
   statements:
+    - source: "The classification of regular convex polytopes in every dimension: infinitely many polygons, five Platonic solids, six regular 4-polytopes, three families from dimension five on"
+      lean: "platonic_classification"
+      module: "Submission/ClassificazioneFinale.lean (repo Solarys431/lean-eval-platonic-classification)"
+      status: "proved"
     - source: "Sylvester–Gallai: a finite set of points, not all collinear, admits a line through exactly two of them"
       lean: "SylvesterGallai.sylvester_gallai"
       module: "UnicoProofs/SylvesterGallai.lean"
